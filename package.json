@@ -1,0 +1,20 @@
+{
+  "name": "alarmphone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.php",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavpursche/alarmphone.git"
+  },
+  "author": "Gustav Pursche",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/gustavpursche/alarmphone/issues"
+  },
+  "homepage": "https://github.com/gustavpursche/alarmphone#readme",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-less": "^1.0.1"
+  }
+}
