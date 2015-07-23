@@ -1,3 +1,4 @@
+<?php
 function create_post_types() {
   /* PRESS RELEASE */
   register_post_type( 'press-releases',
@@ -24,4 +25,31 @@ function create_post_types() {
   );
 }
 
+function get_press_releases() {
+  return get_posts_of_type('press-releases', null);
+}
+
+function get_campaigns() {
+  return get_posts_of_type('campaigns', null);
+}
+
+function get_posts_of_type($type, $options) {
+  $args = array(
+    'post_type' => $type,
+    'post_status' => 'publish',
+    'post_per_page' => 10,
+    'order' => 'ASC',
+  );
+
+  if(!$options) {
+    $options = array();
+  }
+
+  $result = new WP_Query(array_merge($args, $options));
+
+  return $result->posts;
+}
+
 add_action( 'init', 'create_post_types');
+
+?>
