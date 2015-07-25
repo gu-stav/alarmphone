@@ -68,14 +68,16 @@ function render_post_as_grid_item($post, $size, $css_class) {
   $id = $post->ID;
   $title = $post->post_title;
   $teaser = $post->post_content;
+  $date = $post->post_date;
   $link = get_post_permalink($id);
 
   $html .= '<div class="grid_column grid_column--' . $size . ' post ' . $css_class . '">';
     $html .= '<a href="' . $link . '" ' .
-                'class="post_link">';
-      $html .= '<strong class="post_title">' . $title . '</strong>';
+                'class="post_title--link post_title">';
+      $html .= '<strong>' . $title . '</strong>';
     $html .= '</a>';
-    $html .= '<p class="post_teaser">' . $teaser . '</p>';
+    $html .= '<span class="post_date">' . $date . '</span>';
+    $html .= '<p class="post_teaser richtext">' . $teaser . '</p>';
   $html .= '</div>';
 
   return $html;

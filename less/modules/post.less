@@ -1,0 +1,21 @@
+.post {
+  &_title {
+    color: @text-color-base;
+    display: block;
+    font-family: @font-family-headline-bold;
+    font-size: 1.2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  &_date {
+    display: block;
+    font-family: @font-family-base;
+    font-size: .9rem;
+    font-style: italic;
+  }
+
+  &_title + &_date {
+    margin-top: .2rem;
+  }
+}
