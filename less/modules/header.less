@@ -112,12 +112,11 @@
       margin: 0;
       padding: 0;
 
-     .menu-item {
+     > .menu-item {
        display: inline-block;
        margin: 0 1rem 0 0;
-      }
+       position: relative;
 
-     .menu-item {
        > a {
          border-top: 2px solid @brand-color-base;
          color: @text-color-base;
@@ -132,8 +131,25 @@
          border-bottom: 2px solid @brand-color-base;
        }
       }
+    }
 
+    .sub-menu {
+      background-color: @app-background-base;
+      display: none;
+      left: 0;
+      list-style: none;
+      padding: .5rem;
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      z-index: 100;
 
+      a {
+        color: @text-color-base;
+        display: block;
+        font-family: @font-family-headline-light;
+        padding: .3rem;
+      }
     }
   }
 }
