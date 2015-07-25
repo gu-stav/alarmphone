@@ -1,0 +1,139 @@
+.header {
+  margin-top: 1rem;
+
+  &_service {
+    float: right;
+    margin-bottom: .5rem;
+
+    &-item {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    &-item + &-item {
+      margin-left: .5rem;
+    }
+
+    &-social {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      > li {
+        display: inline-block;
+      }
+    }
+  }
+
+  &_brand-phone-container {
+    border: 1px solid @brand-color-base;
+  }
+
+  &_brand,
+  &_phone {
+    float: left;
+    padding: 1rem;
+    position: relative;
+  }
+
+  &_brand {
+    background-color: @brand-color-base;
+    color: @text-color-on-brand-color-base;
+    width: 75%;
+  }
+
+  &_phone {
+    font-family: @font-family-headline-light;
+    text-align: right;
+    width: 25%;
+
+    &,
+    &-number {
+      color: @brand-color-base;
+    }
+
+    &-label {
+      text-transform: uppercase;
+    }
+
+    &-number {
+      font-family: @font-family-headline-bold;
+      font-size: 1.4rem;
+      text-decoration: none;
+    }
+  }
+
+  &_logo {
+    float: left;
+  }
+
+  &_title {
+    float: right;
+    margin-right: 3rem;
+    max-width: 16rem;
+
+    &-link {
+      color: @text-color-on-brand-color-base;
+      display: block;
+      text-decoration: none;
+    }
+
+    &-link:hover &-headline,
+    &-link:focus &-headline {
+      border-color: @text-color-on-brand-color-base;
+    }
+
+    &-preheadline,
+    &-postheadline {
+      font-family: @font-family-headline-light;
+      margin: 0;
+      padding: 0;
+    }
+
+    &-headline {
+      border-bottom: 2px solid @brand-color-base; /* underline style of agile bold is too much */
+      display: block;
+      font-family: @font-family-headline-bold;
+      font-size: 2.4rem;
+      font-weight: 400;
+      line-height: 1;
+      margin: .3rem 0;
+      padding: 0;
+      text-transform: uppercase;
+    }
+  }
+
+  &_navigation {
+    display: block;
+    margin-top: 1rem;
+
+    .header_navigation-container {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+     .menu-item {
+       display: inline-block;
+       margin: 0 1rem 0 0;
+      }
+
+     .menu-item {
+       > a {
+         border-top: 2px solid @brand-color-base;
+         color: @text-color-base;
+         display: block;
+         font-family: @font-family-headline-bold;
+         padding: .4rem 3rem .4rem .5rem;
+         text-decoration: none;
+         text-transform: uppercase;
+       }
+
+       &.current-menu-item > a {
+         border-bottom: 2px solid @brand-color-base;
+       }
+      }
+
+
+    }
+  }
+}
