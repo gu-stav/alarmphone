@@ -23,7 +23,9 @@
 
       <?php
         if($press_releases) {
-
+          foreach($press_releases as $press_release) {
+            echo render_post_as_grid_item($press_release, '12', '');
+          }
         }
       ?>
     </div>

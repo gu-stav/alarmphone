@@ -124,5 +124,3 @@
       <ul class="app_breadcrumbs breadcrumbs">
         <!-- li elements -->
       </ul>
-
-      <div class="app_content content">
