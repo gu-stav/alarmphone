@@ -1,4 +1,10 @@
 .post {
+  padding: 0 1rem 1rem 0;
+
+  &_link--title {
+    display: block;
+  }
+
   &_title {
     color: @text-color-base;
     display: block;
@@ -13,6 +19,13 @@
     font-family: @font-family-base;
     font-size: .9rem;
     font-style: italic;
+  }
+
+  &_image {
+    display: block;
+    height: auto;
+    margin: 0 0 1rem 0;
+    width: 100%;
   }
 
   &_title + &_date {

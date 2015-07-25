@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="grid_row">
-    <div class="grid_column grid_column--6">
+    <div class="grid_column grid_column--12">
       <?php
         if($campaigns) {
           foreach($campaigns as $campaign) {
@@ -18,7 +18,7 @@
         }
       ?>
     </div>
-    <div class="grid_column grid_column--6">
+    <div class="grid_column grid_column--12">
       <h2><?php _e("Latest Releases") ?></h2>
 
       <?php

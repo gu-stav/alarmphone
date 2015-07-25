@@ -1,4 +1,6 @@
 <?php
+add_image_size( 'post-thumb', 420, 420 );
+
 function create_post_types() {
   /* PRESS RELEASE */
   register_post_type( 'press-releases',
@@ -70,10 +72,19 @@ function render_post_as_grid_item($post, $size, $css_class) {
   $teaser = $post->post_content;
   $date = $post->post_date;
   $link = get_post_permalink($id);
+  $image_id = get_field('image', $id);
+  $image_attr = array(
+    'class' => 'post_image',
+  );
 
   $html .= '<div class="grid_column grid_column--' . $size . ' post ' . $css_class . '">';
     $html .= '<a href="' . $link . '" ' .
                 'class="post_title--link post_title">';
+
+      if($image_id) {
+        $html .= wp_get_attachment_image($image_id, 'post-thumb', 0, $image_attr);
+      }
+
       $html .= '<strong>' . $title . '</strong>';
     $html .= '</a>';
     $html .= '<span class="post_date">' . $date . '</span>';

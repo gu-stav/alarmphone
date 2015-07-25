@@ -3,7 +3,7 @@
   max-width: 60rem;
 
   &_content,
-  &_sidebar {
+  &_aside {
     float: left;
   }
 
@@ -11,7 +11,11 @@
     width: 75%;
   }
 
-  &_sidebar {
+  &_aside {
     width: 25%;
+  }
+
+  &_content + &_aside {
+    padding-left: 1rem;
   }
 }
