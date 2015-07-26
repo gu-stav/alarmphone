@@ -60,7 +60,7 @@ function get_posts_of_type($type, $options) {
   return $result->posts;
 }
 
-function render_post_as_grid_item($post, $size, $css_class) {
+function render_post_as_grid_item($post, $size, $css_class, $type) {
   if(!$post) {
     return false;
   }
@@ -70,12 +70,17 @@ function render_post_as_grid_item($post, $size, $css_class) {
   $id = $post->ID;
   $title = $post->post_title;
   $teaser = $post->post_content;
+  $excerpt = get_field('excerpt', $id);
   $date = $post->post_date;
   $link = get_post_permalink($id);
   $image_id = get_field('image', $id);
   $image_attr = array(
     'class' => 'post_image',
   );
+
+  if($excerpt && $type != 'full') {
+    $teaser = $excerpt;
+  }
 
   $html .= '<div class="grid_column grid_column--' . $size . ' post ' . $css_class . '">';
     $html .= '<a href="' . $link . '" ' .
@@ -90,6 +95,33 @@ function render_post_as_grid_item($post, $size, $css_class) {
     $html .= '<span class="post_date">' . $date . '</span>';
     $html .= '<p class="post_teaser richtext">' . $teaser . '</p>';
   $html .= '</div>';
+
+  return $html;
+}
+
+function render_material($material, $post_id) {
+  $file = $material['file'];
+  $preview = $material['file_preview'];
+
+  $title = $file['title'];
+  $description = $file['description'];
+  $download_url = $file['url'];
+  $language = $material['language'];
+
+  $html = '<li class="material_item material_item--' . $language . ' u-cf">';
+
+  if($preview) {
+    $html .= '<div class="material_preview">';
+    $html .= wp_get_attachment_image($preview['ID'], 'post-thumb', 0, $post_id);
+    $html .= '</div>';
+  }
+
+  $html .= '<div class="material_content">';
+    $html .= '<strong class="material_title">' . $title . '</strong>';
+    $html .= '<p class="material_description">' . $description . '</p>';
+    $html .= '<a href="' . $download_url . '" class="material_download button button--gray">' . __('Download') . '</a>';
+  $html .= '</div>';
+  $html .= '</li>';
 
   return $html;
 }
