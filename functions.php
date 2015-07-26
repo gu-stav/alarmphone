@@ -136,9 +136,13 @@ function render_material($material, $post_id) {
   $file = $material['file'];
   $preview = $material['file_preview'];
 
-  $title = $file['title'];
-  $description = $file['description'];
-  $download_url = $file['url'];
+  if(function_exists('pll_get_post')) {
+    $file = get_post(pll_get_post($file['id']));
+  }
+
+  $title = $file->post_title;
+  $description = $file->post_content;
+  $download_url = $file->guid;
   $language = $material['language'];
 
   $html = '<li class="material_item material_item--' . $language . ' u-cf">';
