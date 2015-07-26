@@ -65,9 +65,16 @@
               }
             ?>
 
-            <select class="header_service-item">
-              <option>English</option>
-            </select>
+            <?php
+              if(function_exists('pll_the_languages')) {
+            ?>
+              <ul class="lang-navigation header_service-item">
+                <?php pll_the_languages(); ?>
+              </ul>
+            <?php
+              }
+            ?>
+
           </div>
         </div>
 

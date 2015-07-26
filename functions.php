@@ -177,10 +177,14 @@ function render_intro($intro) {
   $html = '<div class="grid_column grid_column--12 intro">';
   $html .= '<div class="grid">';
     $html .= '<div class="grid_row">';
-      $html .= '<div class="grid_column grid_column--9 intro_media">';
-      $html .= $media;
-      $html .= '</div>';
-      $html .= '<div class="grid_column grid_column--3">';
+
+      if($media) {
+        $html .= '<div class="grid_column grid_column--9 intro_media">';
+        $html .= $media;
+        $html .= '</div>';
+      }
+
+      $html .= '<div class="grid_column grid_column--' . ($media ? '3' : '12') . '">';
         $html .= '<div class="intro_content">';
           $html .= '<h1 class="intro_headline">' . $title . '</h1>';
           $html .= '<div class="intro_text richtext">' . $text . '</div>';
