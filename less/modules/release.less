@@ -2,5 +2,22 @@
   &_item {
     border-top: 3px solid @brand-color-base;
     padding-top: 1rem;
+    position: relative;
+  }
+
+  &_title,
+  &_teaser {
+    margin-left: 5.5rem;
+  }
+
+  &_date {
+    background-color: @brand-color-base;
+    color: @text-color-on-brand-color-base;
+    font-family: @font-family-headline-bold;
+    font-style: normal;
+    left: 0;
+    padding: .3rem .5rem;
+    position: absolute;
+    top: .8rem;
   }
 }

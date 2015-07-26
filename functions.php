@@ -25,6 +25,18 @@ function create_post_types() {
       'has_archive' => true,
     )
   );
+
+  /* Intro */
+  register_post_type( 'intros',
+    array(
+      'labels' => array(
+        'name' => __( 'Intros' ),
+        'singular_name' => __( 'Intro' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+    )
+  );
 }
 
 if(function_exists('acf_add_options_page')) {
@@ -41,7 +53,11 @@ function get_campaigns() {
 }
 
 function get_intro() {
-  return '';
+  $args = array(
+    'post_per_page' => 1,
+  );
+
+  return get_posts_of_type('intros', null);
 }
 
 function get_posts_of_type($type, $options) {
@@ -60,18 +76,24 @@ function get_posts_of_type($type, $options) {
   return $result->posts;
 }
 
-function render_post_as_grid_item($post, $size, $css_class, $type) {
+function render_post_as_grid_item($post, $size, $css_class, $type, $options=array()) {
   if(!$post) {
     return false;
   }
 
   $html = '';
 
+  if(array_key_exists('date_format', $options)) {
+    $date_format = $options['date_format'];
+  } else {
+    $date_format = __('d.m.Y');
+  }
+
   $id = $post->ID;
   $title = $post->post_title;
   $teaser = $post->post_content;
   $excerpt = get_field('excerpt', $id);
-  $date = $post->post_date;
+  $date = mysql2date($date_format, $post->post_date, True);
   $link = get_post_permalink($id);
   $image_id = get_field('image', $id);
   $image_attr = array(
@@ -99,6 +121,17 @@ function render_post_as_grid_item($post, $size, $css_class, $type) {
   return $html;
 }
 
+function render_press_release($post, $size, $css_class, $type) {
+  $options = array(
+    'date_format' => __('d M y'),
+  );
+
+  $rendered = render_post_as_grid_item($post, $size, $css_class, $type, $options);
+  $rendered = preg_replace('/post_([a-z_\-]+)/i', 'post_$1 release_$1', $rendered);
+
+  return $rendered;
+}
+
 function render_material($material, $post_id) {
   $file = $material['file'];
   $preview = $material['file_preview'];
@@ -124,6 +157,36 @@ function render_material($material, $post_id) {
     $html .= '<a href="' . $download_url . '" class="material_download button button--gray">' . __('Download') . '</a>';
   $html .= '</div>';
   $html .= '</li>';
+
+  return $html;
+}
+
+function render_intro($intro) {
+  $id = $intro->ID;
+  $title = $intro->post_title;
+  $text = apply_filters( 'the_content', $intro->post_content );
+  $image = get_field('image', $id);
+
+  if($image) {
+    $media = wp_get_attachment_image($image['id'], 'large', 0);
+  } else {
+    $video = get_field('youtube_video_url', $id);
+    $media = $video;
+  }
+
+  $html = '<div class="grid_column grid_column--12 intro">';
+  $html .= '<div class="grid">';
+    $html .= '<div class="grid_row">';
+      $html .= '<div class="grid_column grid_column--9 intro_media">';
+      $html .= $media;
+      $html .= '</div>';
+      $html .= '<div class="grid_column grid_column--3">';
+        $html .= '<div class="intro_content">';
+          $html .= '<h1 class="intro_headline">' . $title . '</h1>';
+          $html .= '<div class="intro_text richtext">' . $text . '</div>';
+        $html .= '</div>';
+      $html .= '</div>';
+  $html .= '</div>';
 
   return $html;
 }

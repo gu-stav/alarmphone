@@ -40,8 +40,8 @@
   <body>
     <div class="app">
 
-      <header class="app_header header">
-        <div class="u-cf">
+      <header class="grid app_header header">
+        <div class="grid_row">
           <div class="header_service">
             <div class="header_service-item">
               <?php
@@ -71,8 +71,8 @@
           </div>
         </div>
 
-        <div class="header_brand-phone-container u-cf">
-          <div class="header_brand">
+        <div class="grid_row header_brand-phone-container">
+          <div class="grid_column grid_column--9 header_brand">
             <img src=""
                  class="header_logo"
                  alt="Alarmphone Logo" />
@@ -102,7 +102,7 @@
 
           </div>
 
-          <div class="header_phone">
+          <div class="grid_column grid_column--3 header_phone">
             <p class="header_phone-label">In case of emergency call:</p>
             <a href="tel:+334 86 51 71 61"
                class="header_phone-number">+334 86 51 71 61 </a>
@@ -110,16 +110,18 @@
           </div>
         </div>
 
-        <nav class="header_navigation">
-          <?php
-            if(has_nav_menu( 'primary' )) {
-              wp_nav_menu( array(
-    						'menu_class'     => 'header_navigation-container',
-    						'theme_location' => 'primary',
-    					) );
-            }
-          ?>
-        </nav>
+        <div class="grid_row">
+          <nav class="grid_column grid_column--12 header_navigation">
+            <?php
+              if(has_nav_menu( 'primary' )) {
+                wp_nav_menu( array(
+      						'menu_class'     => 'header_navigation-container',
+      						'theme_location' => 'primary',
+      					) );
+              }
+            ?>
+          </nav>
+        </div>
       </header>
 
       <ul class="app_breadcrumbs breadcrumbs">
