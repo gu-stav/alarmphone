@@ -14,7 +14,7 @@
 ?>
 
 <!doctype html>
-<html>
+<html <?php language_attributes(); ?>>
   <head>
     <title>
       <?php echo $page_title; ?>
@@ -80,8 +80,9 @@
             <div class="header_title">
               <?php
                 if(!is_front_page() && !is_home()) {
+                  $home = esc_url( home_url( '/' ) );
               ?>
-                  <a href="/" class="header_title-link">
+                  <a href="<?php echo $home; ?>" class="header_title-link">
               <?php
                 }
               ?>

@@ -1,10 +1,6 @@
 .post {
   padding: 0 1rem 1rem 0;
 
-  &_link--title {
-    display: block;
-  }
-
   &_title {
     color: @text-color-base;
     display: block;
@@ -12,6 +8,15 @@
     font-size: 1.2rem;
     text-decoration: none;
     text-transform: uppercase;
+
+    &--link {
+      display: block;
+
+      &:hover > strong,
+      &:focus > strong {
+        text-decoration: underline;
+      }
+    }
   }
 
   &_date {

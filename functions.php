@@ -112,13 +112,15 @@ function render_material($material, $post_id) {
 
   if($preview) {
     $html .= '<div class="material_preview">';
-    $html .= wp_get_attachment_image($preview['ID'], 'post-thumb', 0, $post_id);
+    $html .= '<a href="' . $download_url . '">';
+      $html .= wp_get_attachment_image($preview['ID'], 'post-thumb', 0, $post_id);
+    $html .= '</a>';
     $html .= '</div>';
   }
 
   $html .= '<div class="material_content">';
     $html .= '<strong class="material_title">' . $title . '</strong>';
-    $html .= '<p class="material_description">' . $description . '</p>';
+    $html .= '<p class="material_description richtext">' . $description . '</p>';
     $html .= '<a href="' . $download_url . '" class="material_download button button--gray">' . __('Download') . '</a>';
   $html .= '</div>';
   $html .= '</li>';

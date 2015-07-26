@@ -1,7 +1,11 @@
 .material {
   list-style: none;
-  margin: 0;
+  margin: 2rem 0 0 0;
   padding: 0;
+
+  &_item + &_item {
+    margin-top: 2rem;
+  }
 
   &_preview,
   &_content {
@@ -9,6 +13,7 @@
   }
 
   &_preview {
+    padding-right: 1rem;
     width: 25%;
 
     img {
@@ -18,7 +23,23 @@
   }
 
   &_content {
-    padding-left: 2rem;
+    border-top: 3px solid @border-color-base;
+    padding: .5rem 0 0 0;
     width: 75%;
+  }
+
+  &_download {
+    display: inline-block;
+    margin-top: 1rem;
+  }
+
+  &_title {
+    font-family: @font-family-headline-bold;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+
+  &_description {
+    margin: .3rem 0 0 0;
   }
 }

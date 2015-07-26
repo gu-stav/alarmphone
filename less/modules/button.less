@@ -2,8 +2,9 @@
   background: @brand-color-base;
   border: none;
   color: @text-color-on-brand-color-base;
+  font-family: @font-family-headline-bold;
   padding: .25rem .8rem;
-  text-decoration: underline;
+  text-decoration: none;
 
   &:hover,
   &:focus {
@@ -12,5 +13,18 @@
 
   &:active {
     background: darken(@brand-color-base, 25%);
+  }
+
+  &--gray {
+    background: @border-color-base;
+
+    &:hover,
+    &:focus {
+      background: darken(@border-color-base, 15%);
+    }
+
+    &:active {
+      background: darken(@border-color-base, 25%);
+    }
   }
 }
