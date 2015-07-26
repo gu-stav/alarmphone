@@ -138,6 +138,8 @@ function render_material($material, $post_id) {
 
   if(function_exists('pll_get_post')) {
     $file = get_post(pll_get_post($file['id']));
+  } else {
+    $file = get_post($file['id']);
   }
 
   $title = $file->post_title;
