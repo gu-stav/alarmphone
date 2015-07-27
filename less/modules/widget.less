@@ -1,0 +1,36 @@
+.widget {
+  /* RSS-Widget */
+  &_rss {
+    ul {
+      list-style: none;
+      padding: 0;
+
+      a {
+        color: @text-color-base;
+        text-decoration: none;
+      }
+    }
+
+    li {
+      padding: .2rem 0;
+      padding-top: 1.2rem;
+      position: relative;
+    }
+
+    li + li {
+      margin-top: 1rem;
+    }
+
+    .headline > a.rsswidget:first-child {
+      display: none;
+    }
+
+    .rss-date {
+      font-size: .9rem;
+      font-style: italic;
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+  }
+}

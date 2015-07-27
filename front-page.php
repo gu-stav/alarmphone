@@ -19,19 +19,22 @@
 
   <div class="grid_row">
     <div class="grid_column grid_column--9">
-      <div class="grid_column grid_column--12 app_content">
-        <?php
-          if($campaigns) {
-            foreach($campaigns as $campaign) {
-              echo render_post_as_grid_item($campaign, '6', '', 'preview');
+      <div class="grid_row">
+        <div class="grid_column grid_column--12 app_content">
+          <?php
+            if($campaigns) {
+              foreach($campaigns as $campaign) {
+                echo render_campaign($campaign, '6', '', 'preview');
+              }
             }
-          }
-        ?>
+          ?>
+        </div>
       </div>
-      <div class="grid_column grid_column--12">
-        <h2><?php _e("Latest Releases") ?></h2>
 
-        <div class="release">
+      <div class="grid_row">
+        <div class="grid_column grid_column--12 release">
+          <h2 class="headline headline--h2 headline--serif headline--tt-normal release_headline release_headline--front-page"><?php _e("Latest Releases") ?></h2>
+
           <?php
             if($press_releases) {
               foreach($press_releases as $press_release) {

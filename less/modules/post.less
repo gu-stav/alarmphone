@@ -4,10 +4,6 @@
   &_title {
     color: @text-color-base;
     display: block;
-    font-family: @font-family-headline-bold;
-    font-size: 1.2rem;
-    text-decoration: none;
-    text-transform: uppercase;
 
     &--link {
       display: block;
@@ -19,11 +15,17 @@
     }
   }
 
-  &_date {
+  &_date,
+  &_category {
     display: block;
     font-family: @font-family-base;
     font-size: .9rem;
     font-style: italic;
+  }
+
+  &_category {
+    margin-bottom: .35rem;
+    text-transform: none;
   }
 
   &_image {
@@ -34,6 +36,10 @@
   }
 
   &_title + &_date {
-    margin-top: .2rem;
+    margin-top: .35rem;
+  }
+
+  &--full &_teaser {
+    font-weight: bold;
   }
 }

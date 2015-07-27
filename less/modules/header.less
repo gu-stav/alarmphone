@@ -26,11 +26,11 @@
   }
 
   &_brand-phone-container {
-    border: 1px solid @brand-color-base;
+    position: relative;
   }
 
   &_brand,
-  &_phone {
+  &_phone-inner {
     padding: 1.8rem 1.5rem;
     position: relative;
   }
@@ -42,7 +42,20 @@
 
   &_phone {
     font-family: @font-family-headline-light;
+    height: 100%;
+    position: absolute;
+    right: 0;
     text-align: right;
+    top: 0;
+
+    &-inner {
+      border: 1px solid @brand-color-base;
+      margin-left: 1.5rem;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
 
     &,
     &-number {
@@ -54,8 +67,6 @@
     }
 
     &-number {
-      font-family: @font-family-headline-bold;
-      font-size: 1.4rem;
       text-decoration: none;
     }
   }
@@ -66,8 +77,7 @@
 
   &_title {
     float: right;
-    margin-right: 3rem;
-    max-width: 16rem;
+    max-width: 20rem;
 
     &-link {
       color: @text-color-on-brand-color-base;
@@ -90,10 +100,6 @@
     &-headline {
       border-bottom: 2px solid @brand-color-base; /* underline style of agile bold is too much */
       display: block;
-      font-family: @font-family-headline-bold;
-      font-size: 2.4rem;
-      font-weight: 400;
-      line-height: 1;
       margin: .3rem 0;
       padding: 0;
       text-transform: uppercase;

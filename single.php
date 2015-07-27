@@ -11,6 +11,11 @@
                 echo render_post_as_grid_item(get_post(), '12', '', 'full');
               }
             ?>
+          </div>
+        </div>
+
+        <div class="grid_row">
+          <div class="grid_column grid_column--12">
 
             <?php
               $post_id = $post->ID;

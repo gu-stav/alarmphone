@@ -1,13 +1,18 @@
 .intro {
   border: 1px solid @border-color-base;
-  margin: 0 0 2rem 0;
+  margin: 0 0 3rem 0;
+  position: relative;
 
   &_content {
-    padding: 1.5rem;
+    background: @app-background-base;
+    padding: 2.5rem;
+    position: absolute;
+    right: 3rem;
+    top: 3rem;
   }
 
   &_headline {
-    margin: 0;
+    margin: 0 0 4rem 0;
     padding: 0;
   }
 
@@ -15,8 +20,24 @@
     font-size: 0;
     line-height: 1;
 
+    &--video {
+      height: 0;
+      overflow: hidden;
+      position: relative;
+      padding-bottom: 56.25%;
+      padding-top: 30px;
+    }
+
     img {
       height: auto;
+      width: 100%;
+    }
+
+    iframe {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
       width: 100%;
     }
   }

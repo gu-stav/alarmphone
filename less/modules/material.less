@@ -13,18 +13,28 @@
   }
 
   &_preview {
-    padding-right: 1rem;
+    min-height: 8rem;
+    position: relative;
     width: 25%;
 
     img {
       height: auto;
       max-width: 100%;
     }
+
+    &-inner {
+      height: 100%;
+      left: 0;
+      padding: 1rem;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
   }
 
   &_content {
     border-top: 3px solid @border-color-base;
-    padding: .5rem 0 0 0;
+    padding: .5rem 0 0 1rem;
     width: 75%;
   }
 
@@ -32,44 +42,89 @@
     border-color: rgb(0, 158, 188);
   }
 
+  &_item--en &_preview-inner {
+    background: rgb(0, 158, 188);
+  }
+
   &_item--fr &_content {
     border-color: rgb(142, 183, 79);
+  }
+
+  &_item--fr &_preview-inner {
+    background: rgb(142, 183, 79);
   }
 
   &_item--ar &_content {
     border-color: rgb(0, 138, 208);
   }
 
+  &_item--ar &_preview-inner {
+    background: rgb(0, 138, 208);
+  }
+
   &_item--gr &_content {
     border-color: rgb(142, 216, 248);
+  }
+
+  &_item--gr &_preview-inner {
+    background: rgb(142, 216, 248);
   }
 
   &_item--de &_content {
     border-color: rgb(0, 70, 98);
   }
 
+  &_item--de &_preview-inner {
+    background: rgb(0, 70, 98);
+    color: rgb(255, 255, 255);
+  }
+
   &_item--fa &_content {
     border-color: rgb(215, 176, 5);
+  }
+
+  &_item--fa &_preview-inner {
+    background: rgb(215, 176, 5);
   }
 
   &_item--so &_content {
     border-color: rgb(218, 82, 31);
   }
 
+  &_item--so &_preview-inner {
+    background: rgb(218, 82, 31);
+  }
+
   &_item--ti &_content {
     border-color: rgb(186, 1, 123);
+  }
+
+  &_item--ti &_preview-inner {
+    background: rgb(186, 1, 123);
   }
 
   &_item--pa &_content {
     border-color: rgb(54, 142, 62);
   }
 
+  &_item--pa &_preview-inner {
+    background: rgb(54, 142, 62);
+  }
+
   &_item--it &_content {
     border-color: rgb(155, 15, 14);
   }
 
+  &_item--it &_preview-inner {
+    background: rgb(155, 15, 14);
+  }
+
   &_item--es &_content {
     border-color: rgb(126, 94, 67);
+  }
+
+  &_item--es &_preview-inner {
+    background: rgb(126, 94, 67);
   }
 
   &_download {

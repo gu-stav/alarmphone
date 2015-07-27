@@ -7,9 +7,9 @@
   $donation_url = get_field('donation_button_url', 'option');
 
   if( !$page_title ) {
-    $page_title = $page_name;
+    $page_title = __($page_name);
   } else {
-    $page_title .= ' | ' + $page_name;
+    $page_title .= ' | ' . __($page_name);
   }
 ?>
 
@@ -95,7 +95,7 @@
               ?>
 
               <p class="header_title-preheadline">Watch the med</p>
-              <strong class="header_title-headline">Alarmphone</strong>
+              <strong class="header_title-headline headline headline--h1">Alarmphone</strong>
               <p class="header_title-postheadline">Hotline for boatpeople in distress. no rescue, but alarm</p>
 
               <?php
@@ -110,10 +110,11 @@
           </div>
 
           <div class="grid_column grid_column--3 header_phone">
-            <p class="header_phone-label">In case of emergency call:</p>
-            <a href="tel:+334 86 51 71 61"
-               class="header_phone-number">+334 86 51 71 61 </a>
-            <!-- Phone Number as field of the blog ? -->
+            <div class="header_phone-inner">
+              <p class="header_phone-label"><?php _e("In case of emergency call"); ?></p>
+              <a href="tel:<?php _e("+334 86 51 71 61"); ?>"
+                 class="header_phone-number headline headline--h3"><?php _e("+334 86 51 71 61"); ?> </a>
+            </div>
           </div>
         </div>
 
@@ -130,7 +131,3 @@
           </nav>
         </div>
       </header>
-
-      <ul class="app_breadcrumbs breadcrumbs">
-        <!-- li elements -->
-      </ul>
