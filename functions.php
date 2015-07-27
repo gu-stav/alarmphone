@@ -172,7 +172,7 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
       $html .= '<strong>' . $title . '</strong>';
       $html .= '</a>';
     } else {
-      $html .= '<strong class="post_title--link post_title headline headline--h' . $headline_hierachy . '">' . $title . '</strong>';
+      $html .= '<strong class="post_title--link post_title headline headline--h' . $headline_hierachy . ' headline--serif headline--tt-normal">' . $title . '</strong>';
     }
 
     $html .= '<span class="post_date">' . $date . '</span>';
