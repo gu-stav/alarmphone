@@ -20,13 +20,21 @@
       padding: 0;
 
       img {
+        border: 1px solid @brand-color-base;
+        border-radius: 2rem;
         height: auto;
+        padding: .2rem;
         width: 2rem;
       }
 
       > li {
         display: inline-block;
+        text-align: center;
       }
+
+       > li + li {
+         margin-left: .5rem;
+       }
     }
   }
 
