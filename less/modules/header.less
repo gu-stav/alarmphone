@@ -68,6 +68,10 @@
 
     &-number {
       text-decoration: none;
+
+      &:focus {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -129,6 +133,11 @@
          padding: .4rem 3rem .4rem .5rem;
          text-decoration: none;
          text-transform: uppercase;
+
+         &:hover,
+         &:focus {
+           text-decoration: underline;
+         }
        }
 
        &.current-menu-item > a {
@@ -153,6 +162,10 @@
         display: block;
         font-family: @font-family-headline-light;
         padding: .3rem;
+      }
+
+      &--is-open {
+        display: block;
       }
     }
   }
