@@ -102,7 +102,7 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
   if(array_key_exists('date_format', $options)) {
     $date_format = $options['date_format'];
   } else {
-    $date_format = __('d. F Y');
+    $date_format = __('F d, Y');
   }
 
   $id = $post->ID;
@@ -179,7 +179,7 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
 
 function render_press_release($post, $size, $css_class, $type) {
   $options = array(
-    'date_format' => __('d M y'),
+    'date_format' => __('M d, y'),
     'render_post_category' => False,
     'render_post_text' => False,
   );
