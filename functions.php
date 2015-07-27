@@ -312,12 +312,12 @@ function render_intro($intro) {
 function render_social_menu() {
   $html = '<ul class="header_service-social">';
 
-  $menu_slug = "social";
+  $menu_slug = 'social';
   $locations = get_nav_menu_locations();
-  $menu_items = wp_get_nav_menu_items( $locations[ $menu_slug ] );
+  $menu_items = wp_get_nav_menu_items($locations[$menu_slug]);
 
   foreach($menu_items as $item) {
-    $html .= '<li class="menu-item">';
+    $html .= '<li class="header_service-social-item">';
     $has_images = array( 'twitter', 'facebook', 'tumblr' );
     $index = strtolower( $item->title );
     $template_dir = get_bloginfo( 'template_directory' );
@@ -325,7 +325,7 @@ function render_social_menu() {
     $html .= '<a href="' . $item->url . '">';
 
     if( in_array( $index, $has_images ) ) {
-      $html .= '<img src="'. $template_dir . '/assets/' . $index . '.svg"' . 'class="header_menu-social-image"' . ' />';
+      $html .= '<img src="'. $template_dir . '/assets/' . $index . '.svg"' . 'class="header_service-social-image"' . ' />';
       $html .= '<span class="u-accessible-hidden">' . $item->title . '</span>';
     } else {
       $html .= $item->title;

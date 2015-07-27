@@ -11,7 +11,7 @@
     }
 
     &-item + &-item {
-      margin-left: .5rem;
+      margin-left: 1rem;
     }
 
     &-social {
@@ -19,22 +19,30 @@
       margin: 0;
       padding: 0;
 
-      img {
+      &-image {
         border: 1px solid @brand-color-base;
         border-radius: 2rem;
         height: auto;
-        padding: .2rem;
+        padding: .35rem;
         width: 2rem;
       }
 
-      > li {
-        display: inline-block;
-        text-align: center;
+      a:hover &-image,
+      a:focus &-image {
+        border-color: darken(@brand-color-base, 25%);
       }
 
-       > li + li {
-         margin-left: .5rem;
-       }
+      &-item {
+        display: inline-block;
+        font-size: 0;
+        line-height: 0;
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      &-item + &-item {
+        margin-left: .5rem;
+      }
     }
   }
 
