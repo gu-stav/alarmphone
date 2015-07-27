@@ -9,7 +9,11 @@
             }
           ?>
         </footer>
+      </div>
     </div>
-    </div>
+
+    <script src="<?php bloginfo('template_url'); ?>/js/dist/main.js"
+            async
+            defer></script>
   </body>
 </html>

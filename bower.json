@@ -1,0 +1,13 @@
+{
+  "name": "alarmphone",
+  "version": "0.0.0",
+  "homepage": "https://github.com/gustavpursche/alarmphone",
+  "authors": [
+    "Gustav Pursche <gustavpursche@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "requirejs": "~2.1.19",
+    "jquery": "~2.1.4"
+  }
+}
