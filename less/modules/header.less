@@ -71,7 +71,7 @@
 
     &-inner {
       border: 1px solid @brand-color-base;
-      margin-left: 1.5rem;
+      margin-left: 1rem;
       height: 100%;
       position: absolute;
       right: 0;
@@ -188,6 +188,28 @@
       &--is-open {
         display: block;
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .header {
+    &_brand,
+    &_phone {
+      width: 50%;
+    }
+
+    &_title,
+    &_logo {
+      float: none;
+    }
+
+    &_logo {
+      width: 6rem;
+    }
+
+    &_title-headline {
+      font-size: 2rem;
     }
   }
 }

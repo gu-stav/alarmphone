@@ -47,3 +47,33 @@
     }
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .intro {
+    &_headline {
+      margin-bottom: .5rem;
+    }
+
+    &_content {
+      background: rgba(0, 0, 0, .8);
+      bottom: 0;
+      color: @text-color-on-background-color-on-image-transparent;
+      left: 0;
+      padding: 1rem 1.5rem;
+      right: auto;
+      top: auto;
+      width: 100%;
+    }
+
+    &_text {
+      p {
+        margin: 0;
+      }
+
+      &,
+      .richtext a {
+        color: @text-color-on-background-color-on-image-transparent;
+      }
+    }
+  }
+}

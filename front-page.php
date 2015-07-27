@@ -18,37 +18,33 @@
   </div>
 
   <div class="grid_row">
-    <div class="grid_column grid_column--9">
-      <div class="grid_row">
-        <div class="grid_column grid_column--12 app_content">
-          <?php
-            if($campaigns) {
-              foreach($campaigns as $campaign) {
-                echo render_campaign($campaign, '6', '', 'preview');
-              }
+    <div class="grid_column grid_column--9 app_content">
+      <div>
+        <?php
+          if($campaigns) {
+            foreach($campaigns as $campaign) {
+              echo render_campaign($campaign, '6', '', 'preview');
             }
-          ?>
-        </div>
+          }
+        ?>
       </div>
 
-      <div class="grid_row">
-        <div class="grid_column grid_column--12 release">
-          <h2 class="headline headline--h2 headline--serif headline--tt-normal release_headline release_headline--front-page">
-            <span>
-              <?php _e("Latest Releases") ?>
-            </span>
+      <div class="release">
+        <h2 class="headline headline--h2 headline--serif headline--tt-normal release_headline release_headline--front-page">
+          <span>
+            <?php _e("Latest Releases") ?>
+          </span>
 
-            <a href="<?php echo get_post_type_archive_link('press-releases'); ?>"><?php _e("All Releases"); ?></a>
-          </h2>
+          <a href="<?php echo get_post_type_archive_link('press-releases'); ?>"><?php _e("All Releases"); ?></a>
+        </h2>
 
-          <?php
-            if($press_releases) {
-              foreach($press_releases as $press_release) {
-                echo render_press_release($press_release, '12', 'release_item', 'preview');
-              }
+        <?php
+          if($press_releases) {
+            foreach($press_releases as $press_release) {
+              echo render_press_release($press_release, '12', 'release_item', 'preview');
             }
-          ?>
-        </div>
+          }
+        ?>
       </div>
     </div>
 
