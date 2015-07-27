@@ -7,9 +7,7 @@
         <div class="grid_row">
           <div class="grid_column grid_column--12">
             <?php
-              if($post) {
-                echo render_post_as_grid_item(get_post(), '12', '', 'full');
-              }
+              echo render_post_as_grid_item(get_post(), '12', '', 'full');
             ?>
           </div>
         </div>

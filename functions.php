@@ -59,6 +59,7 @@ if(function_exists('acf_add_options_page')) {
 function get_press_releases() {
   $options = array(
     'post_per_page' => 5,
+    'order' => 'DESC',
   );
 
   return get_posts_of_type('press-releases', $options);

@@ -33,7 +33,13 @@
 
       <div class="grid_row">
         <div class="grid_column grid_column--12 release">
-          <h2 class="headline headline--h2 headline--serif headline--tt-normal release_headline release_headline--front-page"><?php _e("Latest Releases") ?></h2>
+          <h2 class="headline headline--h2 headline--serif headline--tt-normal release_headline release_headline--front-page">
+            <span>
+              <?php _e("Latest Releases") ?>
+            </span>
+
+            <a href="<?php echo get_post_type_archive_link('press-releases'); ?>"><?php _e("All Releases"); ?></a>
+          </h2>
 
           <?php
             if($press_releases) {
