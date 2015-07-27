@@ -25,6 +25,8 @@
           type="text/css" />
     <meta name="viewport"
           content="initial-scale=1" />
+    <link rel="shortcut icon"
+          href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico" />
 
     <?php
       if( $page_description ) {
