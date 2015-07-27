@@ -26,7 +26,7 @@
     <meta name="viewport"
           content="initial-scale=1" />
     <link rel="shortcut icon"
-          href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico" />
+          href="<?php bloginfo('template_url'); ?>/favicon.ico" />
 
     <?php
       if( $page_description ) {
@@ -46,14 +46,7 @@
         <div class="grid_row">
           <div class="header_service">
             <div class="header_service-item">
-              <?php
-                if(has_nav_menu( 'social' )) {
-                  wp_nav_menu( array(
-        						'menu_class'     => 'header_service-social',
-        						'theme_location' => 'social',
-        					) );
-                }
-              ?>
+              <?php echo render_social_menu(); ?>
             </div>
 
             <?php
@@ -82,9 +75,9 @@
 
         <div class="grid_row header_brand-phone-container">
           <div class="grid_column grid_column--9 header_brand">
-            <img src=""
+            <img src="<?php bloginfo('template_url'); ?>/assets/ap-logo.svg"
                  class="header_logo"
-                 alt="Alarmphone Logo" />
+                 alt="<?php _e("Alarmphone Logo"); ?>" />
 
             <div class="header_title">
               <?php

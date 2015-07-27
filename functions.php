@@ -309,6 +309,37 @@ function render_intro($intro) {
   return $html;
 }
 
+function render_social_menu() {
+  $html = '<ul class="header_service-social">';
+
+  $menu_slug = "social";
+  $locations = get_nav_menu_locations();
+  $menu_items = wp_get_nav_menu_items( $locations[ $menu_slug ] );
+
+  foreach($menu_items as $item) {
+    $html .= '<li class="menu-item">';
+    $has_images = array( 'twitter', 'facebook', 'tumblr' );
+    $index = strtolower( $item->title );
+    $template_dir = get_bloginfo( 'template_directory' );
+
+    $html .= '<a href="' . $item->url . '">';
+
+    if( in_array( $index, $has_images ) ) {
+      $html .= '<img src="'. $template_dir . '/assets/' . $index . '.svg"' . 'class="header_menu-social-image"' . ' />';
+      $html .= '<span class="u-accessible-hidden">' . $item->title . '</span>';
+    } else {
+      $html .= $item->title;
+    }
+
+    $html .= '</a>';
+    $html .= '</li>';
+  }
+
+  $html .= '</ul>';
+
+  return $html;
+}
+
 register_nav_menus( array(
   'primary' => __( 'Primary Menu' ),
   'social'  => __( 'Social Links Menu' ),

@@ -36,6 +36,25 @@ module.exports = function(grunt) {
       },
     },
 
+    svgmin: {
+      options: {
+        plugins: [
+          {
+            removeViewBox: false
+          }, {
+            removeUselessStrokeAndFill: false
+          }
+        ]
+      },
+      dist: {
+        files: {
+          'assets/facebook.svg': 'assets/facebook.svg',
+          'assets/tumblr.svg': 'assets/tumblr.svg',
+          'assets/twitter.svg': 'assets/twitter.svg'
+        }
+      }
+    },
+
     watch: {
       less: {
         files: ['less/**/*.less',],
