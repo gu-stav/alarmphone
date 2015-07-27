@@ -50,7 +50,8 @@ module.exports = function(grunt) {
         files: {
           'assets/facebook.svg': 'assets/facebook.svg',
           'assets/tumblr.svg': 'assets/tumblr.svg',
-          'assets/twitter.svg': 'assets/twitter.svg'
+          'assets/twitter.svg': 'assets/twitter.svg',
+          'assets/ap-logo.svg': 'assets/ap-logo.svg',
         }
       }
     },
