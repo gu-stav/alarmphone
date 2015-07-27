@@ -122,6 +122,11 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
   $render_post_teaser = True;
   $headline_hierachy = '3';
 
+  if($type == 'full') {
+    $render_post_category = False;
+    $headline_hierachy = '1';
+  }
+
   if(array_key_exists('render_post_category', $options)) {
     $render_post_category = $options['render_post_category'];
   }
@@ -147,8 +152,11 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
   }
 
   $html .= '<div class="grid_column grid_column--' . $size . ' post ' . ($type == 'full' ? 'post--full' : '') . ' ' . $css_class . '">';
-    $html .= '<a href="' . $link . '" ' .
-                'class="post_title--link post_title headline headline--h' . $headline_hierachy . '">';
+
+    if($type != 'full') {
+      $html .= '<a href="' . $link . '" ' .
+                  'class="post_title--link post_title headline headline--h' . $headline_hierachy . '">';
+    }
 
       if($image_id) {
         $html .= wp_get_attachment_image($image_id, $image_size, 0, $image_attr);
@@ -160,8 +168,13 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
                  '</span>';
       }
 
+    if($type != 'full') {
       $html .= '<strong>' . $title . '</strong>';
-    $html .= '</a>';
+      $html .= '</a>';
+    } else {
+      $html .= '<strong class="post_title--link post_title headline headline--h' . $headline_hierachy . '">' . $title . '</strong>';
+    }
+
     $html .= '<span class="post_date">' . $date . '</span>';
 
     if($render_post_teaser && $teaser) {
@@ -194,6 +207,16 @@ function render_campaign($post, $size, $css_class, $type) {
   $options = array(
     'render_post_teaser' => False,
     'render_post_text' => False,
+  );
+
+  return render_post_as_grid_item($post, $size, $css_class, $type, $options);
+}
+
+function render_sae($post, $size, $css_class, $type) {
+  $options = array(
+    'render_post_teaser' => True,
+    'render_post_text' => False,
+    'render_post_category' => False,
   );
 
   return render_post_as_grid_item($post, $size, $css_class, $type, $options);

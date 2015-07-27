@@ -27,7 +27,7 @@
           <?php
             if($posts) {
               foreach($posts as $post) {
-                echo render_press_release($post, '4', 'release_item', 'preview');
+                echo render_sae($post, '4', 'release_item', 'preview');
               }
             }
           ?>
