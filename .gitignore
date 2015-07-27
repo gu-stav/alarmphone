@@ -1,3 +1,5 @@
 style.css
 vagrantpress/
 node_modules/
+bower_components/
+js/dist/
