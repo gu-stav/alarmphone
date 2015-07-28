@@ -194,14 +194,27 @@
 
 @media only screen and (max-width: 768px) {
   .header {
-    &_brand,
-    &_phone {
-      width: 50%;
+    &_logo,
+    &_title {
+      float: left;
     }
 
-    &_title,
     &_logo {
-      float: none;
+      max-width: 6rem;
+      padding-right: 1.5rem;
+      width: 30%;
+    }
+
+    &_title {
+      width: 70%;
+    }
+
+    &_brand {
+      width: 60%;
+    }
+
+    &_phone {
+      width: 40%;
     }
 
     &_logo {
@@ -210,6 +223,38 @@
 
     &_title-headline {
       font-size: 2rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .header {
+    &_brand,
+    &_phone {
+      float: none;
+      width: 100%;
+    }
+
+    &_phone,
+    &_phone-inner {
+      position: static;
+    }
+
+    &_phone-inner {
+      border: none;
+      margin-left: 0;
+      padding: .5rem 1rem;
+
+      p {
+        display: inline-block;
+        margin: 0;
+        vertical-align: middle;
+      }
+    }
+
+    &_phone-number,
+    &_phone-label {
+      font-size: .9rem;
     }
   }
 }

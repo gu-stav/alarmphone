@@ -74,7 +74,15 @@
         </div>
 
         <div class="grid_row header_brand-phone-container">
-          <div class="grid_column grid_column--9 header_brand">
+          <div class="grid_column grid_column--3 header_phone">
+            <div class="header_phone-inner">
+              <p class="header_phone-label"><?php _e("In case of emergency call"); ?></p>
+              <a href="tel:<?php _e("+334 86 51 71 61"); ?>"
+                 class="header_phone-number headline headline--h3"><?php _e("+334 86 51 71 61"); ?> </a>
+            </div>
+          </div>
+
+          <div class="grid_column grid_column--9 header_brand u-cf">
             <img src="<?php bloginfo('template_url'); ?>/assets/ap-logo.svg"
                  class="header_logo"
                  alt="<?php _e("Alarmphone Logo"); ?>" />
@@ -102,14 +110,6 @@
               ?>
             </div>
 
-          </div>
-
-          <div class="grid_column grid_column--3 header_phone">
-            <div class="header_phone-inner">
-              <p class="header_phone-label"><?php _e("In case of emergency call"); ?></p>
-              <a href="tel:<?php _e("+334 86 51 71 61"); ?>"
-                 class="header_phone-number headline headline--h3"><?php _e("+334 86 51 71 61"); ?> </a>
-            </div>
           </div>
         </div>
 
