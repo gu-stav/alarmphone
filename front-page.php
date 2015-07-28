@@ -9,11 +9,13 @@
 <div class="grid">
   <div class="grid_row">
     <div class="grid_column grid_column--12">
-      <?php
-        if($intro) {
-          echo render_intro($intro[0]);
-        }
-      ?>
+      <div class="intro">
+        <?php
+          if($intro) {
+            echo render_intro($intro[0]);
+          }
+        ?>
+      </div>
     </div>
   </div>
 

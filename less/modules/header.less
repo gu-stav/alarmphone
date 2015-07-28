@@ -194,6 +194,8 @@
 
 @media only screen and (max-width: 768px) {
   .header {
+    margin-bottom: 1rem;
+
     &_logo,
     &_title {
       float: left;
@@ -223,6 +225,14 @@
 
     &_title-headline {
       font-size: 2rem;
+    }
+
+    &_navigation {
+      padding: 0 1rem;
+    }
+
+    &_navigation &_navigation-container > .menu-item > a {
+      padding-right: 1rem;
     }
   }
 }

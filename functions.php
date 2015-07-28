@@ -290,7 +290,7 @@ function render_intro($intro) {
     $media = wp_oembed_get($video, array('width' => '850px'));
   }
 
-  $html = '<div class="grid_column grid_column--12 intro">';
+  $html = '<div class="grid_column grid_column--12 intro_container">';
   $html .= '<div class="grid">';
     $html .= '<div class="grid_row">';
 

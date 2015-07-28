@@ -1,6 +1,8 @@
 .intro {
-  margin: 0 0 4rem 0;
-  position: relative;
+  &_container {
+    margin: 0 0 4rem 0;
+    position: relative;
+  }
 
   &_content {
     background: @app-background-base;
@@ -50,6 +52,13 @@
 
 @media only screen and (max-width: 768px) {
   .intro {
+    float: none;
+    padding: 1rem;
+
+    &_container {
+      margin-bottom: 1.5rem;
+    }
+
     &_headline {
       margin-bottom: .5rem;
     }
