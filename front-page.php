@@ -19,7 +19,7 @@
 
   <div class="grid_row">
     <div class="grid_column grid_column--9 app_content">
-      <div>
+      <div class="grid_row">
         <?php
           if($campaigns) {
             foreach($campaigns as $campaign) {
@@ -29,7 +29,7 @@
         ?>
       </div>
 
-      <div class="release">
+      <div class="release grid_row">
         <h2 class="headline headline--h2 headline--serif headline--tt-normal release_headline release_headline--front-page">
           <span>
             <?php _e("Latest Releases") ?>
