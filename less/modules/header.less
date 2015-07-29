@@ -270,9 +270,13 @@
     &_navigation {
       margin-top: .5rem;
 
-      .menu-item {
+      &-container > .menu-item {
         display: block;
         width: 100%;
+      }
+
+      &-container > .menu-item.current-menu-item .sub-menu {
+        display: block;
       }
 
       .menu-item:first-child a {
@@ -282,6 +286,12 @@
       .sub-menu {
         position: static;
       }
+    }
+
+    &_navigation &_navigation-container > .menu-item.current-menu-item > a {
+      background-color: @brand-color-base;
+      border-bottom: none;
+      color: @text-color-on-brand-color-base;
     }
   }
 }
