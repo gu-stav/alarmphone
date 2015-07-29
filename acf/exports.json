@@ -66,6 +66,142 @@
         "hide_on_screen": ""
     },
     {
+        "key": "group_55b3db2d52769",
+        "title": "Donation Button",
+        "fields": [
+            {
+                "key": "field_55b3db39ec8d0",
+                "label": "Donation Button URL",
+                "name": "donation_button_url",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "URL"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "acf-options-general-options"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": ""
+    },
+    {
+        "key": "group_55b4a93dd42b5",
+        "title": "Intro",
+        "fields": [
+            {
+                "key": "field_55b4a94105b04",
+                "label": "Image or Video",
+                "name": "image_or_video",
+                "type": "radio",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "video": "Video",
+                    "image": "Image"
+                },
+                "other_choice": 0,
+                "save_other_choice": 0,
+                "default_value": "image",
+                "layout": "horizontal"
+            },
+            {
+                "key": "field_55b4a97105b05",
+                "label": "Youtube Video Url",
+                "name": "youtube_video_url",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_55b4a94105b04",
+                            "operator": "==",
+                            "value": "video"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_55b4a99fe24a3",
+                "label": "Image",
+                "name": "image",
+                "type": "image",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_55b4a94105b04",
+                            "operator": "==",
+                            "value": "image"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "large",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "intros"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": ""
+    },
+    {
         "key": "group_55b4924e56575",
         "title": "Material",
         "fields": [
@@ -200,14 +336,14 @@
         "hide_on_screen": ""
     },
     {
-        "key": "group_55b3db2d52769",
-        "title": "Service Navigation",
+        "key": "group_55b53c53cf382",
+        "title": "Posts",
         "fields": [
             {
-                "key": "field_55b3db39ec8d0",
-                "label": "Donation Button URL",
-                "name": "donation_button_url",
-                "type": "url",
+                "key": "field_55b53c597703b",
+                "label": "Excerpt",
+                "name": "excerpt",
+                "type": "textarea",
                 "instructions": "",
                 "required": 0,
                 "conditional_logic": 0,
@@ -217,15 +353,67 @@
                     "id": ""
                 },
                 "default_value": "",
-                "placeholder": "URL"
+                "placeholder": "",
+                "maxlength": "",
+                "rows": "",
+                "new_lines": "wpautop",
+                "readonly": 0,
+                "disabled": 0
             }
         ],
         "location": [
             [
                 {
-                    "param": "options_page",
+                    "param": "post_type",
                     "operator": "==",
-                    "value": "acf-options-general-options"
+                    "value": "post"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": ""
+    },
+    {
+        "key": "group_55b6024f6d6ad",
+        "title": "Safety at Sea",
+        "fields": [
+            {
+                "key": "field_55b60255f1e7f",
+                "label": "Excerpt",
+                "name": "excerpt",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": "",
+                "new_lines": "wpautop",
+                "readonly": 0,
+                "disabled": 0
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "post"
+                },
+                {
+                    "param": "post_category",
+                    "operator": "==",
+                    "value": "category:safety-at-sea"
                 }
             ]
         ],

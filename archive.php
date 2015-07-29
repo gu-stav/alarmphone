@@ -39,7 +39,7 @@
           <?php
             if($posts) {
               foreach($posts as $post) {
-                echo render_press_release($post, '12', 'release_item', 'preview');
+                echo render_blog_post($post, '12', 'release_item', 'preview');
               }
             }
           ?>

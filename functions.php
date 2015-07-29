@@ -14,18 +14,6 @@ function widgets_init() {
 }
 
 function create_post_types() {
-  /* PRESS RELEASE */
-  register_post_type( 'press-releases',
-    array(
-      'labels' => array(
-        'name' => __( 'Press Releases' ),
-        'singular_name' => __( 'Press Release' )
-      ),
-      'public' => true,
-      'has_archive' => true,
-    )
-  );
-
   /* CAMPAIGN */
   register_post_type( 'campaigns',
     array(
@@ -56,13 +44,13 @@ if(function_exists('acf_add_options_page')) {
   acf_add_options_sub_page('General Options');
 }
 
-function get_press_releases() {
+function get_blog_posts() {
   $options = array(
     'post_per_page' => 5,
     'order' => 'DESC',
   );
 
-  return get_posts_of_type('press-releases', $options);
+  return get_posts_of_type('post', $options);
 }
 
 function get_campaigns() {
@@ -191,7 +179,7 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
   return $html;
 }
 
-function render_press_release($post, $size, $css_class, $type) {
+function render_blog_post($post, $size, $css_class, $type) {
   $options = array(
     'date_format' => __('M d, y'),
     'render_post_category' => False,
