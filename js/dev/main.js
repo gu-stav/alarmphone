@@ -61,3 +61,18 @@ require(['jquery'], function($) {
       });
   });
 });
+
+/* Language Select */
+require(['jquery'], function($) {
+  $(function() {
+    var $container = $('.language-select');
+    var $trigger = $container.children('.language-select_label');
+    var $list = $container.children('.language-select_list');
+
+    $trigger.on('click', function(e) {
+      e.preventDefault();
+
+      $list.toggleClass('language-select_list--is-open')
+    });
+  });
+});

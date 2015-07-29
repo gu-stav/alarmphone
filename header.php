@@ -62,10 +62,13 @@
 
             <?php
               if(function_exists('pll_the_languages')) {
+                echo render_language_select();
             ?>
-              <ul class="lang-navigation header_service-item">
-                <?php pll_the_languages(); ?>
-              </ul>
+              <div class="header_service-item">
+                <h6 class="u-accessible-hidden">
+                  <?php _e("Select language"); ?>
+                </h6>
+              </div>
             <?php
               }
             ?>
