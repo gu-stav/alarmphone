@@ -10,6 +10,7 @@ requirejs.config({
   },
 });
 
+/* Navigation */
 require(['jquery'], function($) {
   $(function() {
     var $navigation = $('.header_navigation-container');

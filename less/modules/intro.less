@@ -4,12 +4,38 @@
     position: relative;
   }
 
+  &_container:hover &_content > a,
+  &_container:focus &_content > a {
+    text-decoration: underline;
+  }
+
+  &_container--video {
+    border: 1px solid @border-color-base;
+  }
+
+  &_container--video &_media {
+    height: 0;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+  }
+
+  &_container--video &_content {
+    position: static;
+  }
+
   &_content {
     background: @app-background-base;
     padding: 2.5rem;
     position: absolute;
     right: 3rem;
     top: 3rem;
+
+   > a {
+     color: @text-color-base;
+     text-decoration: none;
+   }
   }
 
   &_headline {
@@ -20,14 +46,6 @@
   &_media {
     font-size: 0;
     line-height: 1;
-
-    &--video {
-      height: 0;
-      overflow: hidden;
-      position: relative;
-      padding-bottom: 56.25%;
-      padding-top: 30px;
-    }
 
     img {
       height: auto;
@@ -42,12 +60,6 @@
       width: 100%;
     }
   }
-
-  &_text {
-    a {
-      font-family: @font-family-headline-light;
-    }
-  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -56,32 +68,28 @@
     padding: 1rem;
 
     &_container {
+      border: none;
       margin-bottom: 1.5rem;
     }
 
     &_headline {
-      margin-bottom: .5rem;
+      font-size: 1.5rem;
+      margin-bottom: .3rem;
+    }
+
+    &_media {
+      width: 100%;
     }
 
     &_content {
-      background: rgba(0, 0, 0, .8);
-      bottom: 0;
-      color: @text-color-on-background-color-on-image-transparent;
-      left: 0;
-      padding: 1rem 1.5rem;
-      right: auto;
-      top: auto;
+      padding: 1rem 0 0 0;
+      position: static;
       width: 100%;
     }
 
     &_text {
       p {
         margin: 0;
-      }
-
-      &,
-      .richtext a {
-        color: @text-color-on-background-color-on-image-transparent;
       }
     }
   }

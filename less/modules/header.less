@@ -266,5 +266,34 @@
     &_phone-label {
       font-size: .9rem;
     }
+
+    &_navigation {
+      margin-top: .5rem;
+
+      .menu-item {
+        display: block;
+        width: 100%;
+      }
+
+      .menu-item:first-child a {
+        border-top: none;
+      }
+
+      .sub-menu {
+        position: static;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .header {
+    &_logo {
+      display: none;
+    }
+
+    &_title {
+      width: 100%;
+    }
   }
 }

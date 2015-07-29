@@ -36,14 +36,12 @@
           <span>
             <?php _e("Latest News") ?>
           </span>
-
-          <a href="<?php echo get_post_type_archive_link('post'); ?>"><?php _e("All Articles"); ?></a>
         </h2>
 
         <?php
           if($posts) {
             foreach($posts as $post) {
-              echo render_blog_post($post, '12', 'release_item', 'preview');
+              echo render_blog_post($post, '12', 'release_item', 'preview', null);
             }
           }
         ?>

@@ -1,0 +1,25 @@
+.pagination {
+  margin-top: 3rem;
+
+  .page-numbers {
+    border: 1px solid @brand-color-base;
+    color: @text-color-base;
+    display: inline-block;
+    font-family: @font-family-headline-bold;
+    line-height: 1;
+    padding: .3rem .8rem .5rem .8rem;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &.current {
+      background: @brand-color-base;
+      color: @text-color-on-brand-color-base;
+    }
+
+    &:hover,
+    &:focus {
+      background: @brand-color-base;
+      color: @text-color-on-brand-color-base;
+    }
+  }
+}

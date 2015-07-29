@@ -109,6 +109,7 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
   $render_post_category = True;
   $render_post_text = True;
   $render_post_teaser = True;
+  $render_post_date = True;
   $headline_hierachy = '3';
 
   if($type == 'full') {
@@ -130,6 +131,10 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
 
   if(array_key_exists('headline_hierachy', $options)) {
     $headline_hierachy = $options['headline_hierachy'];
+  }
+
+  if(array_key_exists('render_post_date', $options)) {
+    $render_post_date = $options['render_post_date'];
   }
 
   $image_size = 'post-thumb';
@@ -164,7 +169,9 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
       $html .= '<strong class="post_title--link post_title headline headline--h' . $headline_hierachy . ' headline--serif headline--tt-normal">' . $title . '</strong>';
     }
 
-    $html .= '<span class="post_date">' . $date . '</span>';
+    if($render_post_date) {
+      $html .= '<span class="post_date">' . $date . '</span>';
+    }
 
     if($render_post_teaser && $teaser) {
       $html .= '<div class="post_teaser richtext">' . $teaser . '</div>';
@@ -179,13 +186,18 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
   return $html;
 }
 
-function render_blog_post($post, $size, $css_class, $type) {
-  $options = array(
+function render_blog_post($post, $size, $css_class, $type, $options) {
+  $opt = array(
     'date_format' => __('M d, y'),
     'render_post_category' => False,
     'render_post_text' => False,
   );
 
+  if(!$options) {
+    $options = array();
+  }
+
+  $options = array_merge($opt, $options);
   $rendered = render_post_as_grid_item($post, $size, $css_class, $type, $options);
   $rendered = preg_replace('/post_([a-z_\-]+)/i', 'post_$1 release_$1', $rendered);
 
@@ -268,28 +280,48 @@ function render_material($material, $post_id) {
 function render_intro($intro) {
   $id = $intro->ID;
   $title = $intro->post_title;
-  $text = apply_filters( 'the_content', $intro->post_content );
-  $image = get_field('image', $id);
+  $link = get_permalink($id);
+  $text = apply_filters('the_content', get_field('excerpt', $id));
+  $image_or_video = get_field('image_or_video', $id);
+  $col_width_media = $image_or_video == 'image' ? 12 : 9;
+  $col_width_text = $image_or_video == 'image' ? 4 : 3;
 
-  if($image) {
+  if($image_or_video == 'image') {
+    $image = get_field('image', $id);
     $media = wp_get_attachment_image($image['id'], 'large', 0);
   } else {
     $video = get_field('youtube_video_url', $id);
     $media = wp_oembed_get($video, array('width' => '850px'));
   }
 
-  $html = '<div class="grid_column grid_column--12 intro_container">';
+  if(!$media) {
+    $col_width_text = 12;
+  }
+
+  $html = '<div class="grid_column grid_column--12 intro_container ' . (isset($video) ? 'intro_container--video' : '') . '">';
   $html .= '<div class="grid">';
     $html .= '<div class="grid_row">';
 
       if($media) {
-        $html .= '<div class="grid_column grid_column--12 intro_media ' . (isset($video) ? 'intro_media--video' : '') . '">';
-        $html .= $media;
+        $html .= '<div class="grid_column grid_column--' . $col_width_media . ' intro_media">';
+
+        if($image_or_video == 'image') {
+          $html .= '<a href="' . $link . '">';
+        }
+
+          $html .= $media;
+
+        if($image_or_video == 'image') {
+          $html .= '</a>';
+        }
+
         $html .= '</div>';
       }
 
-      $html .= '<div class="grid_column grid_column--' . ($media ? '4' : '12') . ' intro_content">';
+      $html .= '<div class="grid_column grid_column--' . $col_width_text . ' intro_content">';
+        $html .= '<a href="' . $link . '">';
         $html .= '<h1 class="intro_headline headline headline--h2">' . $title . '</h1>';
+        $html .= '</a>';
         $html .= '<div class="intro_text richtext">' . $text . '</div>';
       $html .= '</div>';
   $html .= '</div>';
