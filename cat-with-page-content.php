@@ -8,45 +8,41 @@ Template Name: Safety at Sea
 
 <div class="grid">
   <div class="grid_row">
-    <div class="grid_column grid_column--9">
+    <div class="grid_column grid_column--9 app_content content">
       <div class="grid_row">
-        <div class="grid_column grid_column--9 app_content content">
-          <div class="grid">
-            <div class="grid_row">
-              <div class="grid_column grid_column--12">
-                <?php
-                  $options = array(
-                    'render_post_date' => False
-                  );
+        <div class="grid_column grid_column--12">
+          <?php
+            $options = array(
+              'render_post_date' => False
+            );
 
-                  echo render_post_as_grid_item(get_post(), '12', '', 'full', $options);
-                ?>
-              </div>
-            </div>
-          </div>
+            echo render_post_as_grid_item(get_post(), '12', '', 'full', $options);
+          ?>
         </div>
       </div>
 
       <div class="grid_row">
         <div class="grid_column grid_column--12">
           <div class="release">
-            <?php
-              $category_name = 'Safety at Sea';
-              $category_id = get_cat_ID($category_name);
+            <div class="grid_row">
+              <?php
+                $category_name = 'Safety at Sea';
+                $category_id = get_cat_ID($category_name);
 
-              $posts = query_posts(array(
-                'cat' => $category_id,
-                'post_type' => 'post',
-                'posts_per_page' => -1,
-                'post_status' => 'publish',
-              ));
+                $posts = query_posts(array(
+                  'cat' => $category_id,
+                  'post_type' => 'post',
+                  'posts_per_page' => -1,
+                  'post_status' => 'publish',
+                ));
 
-              if($posts) {
-                foreach($posts as $post) {
-                  echo render_sae($post, '4', 'release_item', 'preview');
+                if($posts) {
+                  foreach($posts as $post) {
+                    echo render_sae($post, '4', 'release_item', 'preview');
+                  }
                 }
-              }
-            ?>
+              ?>
+            </div>
           </div>
         </div>
       </div>

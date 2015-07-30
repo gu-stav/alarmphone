@@ -1,4 +1,15 @@
 html[dir="rtl"] {
+  .grid {
+    &_column {
+      float: right;
+    }
+  }
+
+  .aside {
+    padding-left: 0;
+    padding-right: 3rem;
+  }
+
   .header {
     &_brand,
     &_logo {
@@ -41,4 +52,27 @@ html[dir="rtl"] {
       padding-right: 1rem;
     }
   }
+
+  .release {
+    &_teaser,
+    &_title {
+      margin-left: 0;
+      margin-right: 5.5rem
+    }
+
+    &_date {
+      left: auto;
+      right: 0;
+    }
+  }
+}
+
+html[dir="rtl"] .header_service-social-item + .header_service-social-item {
+  margin-left: 0;
+  margin-right: .5rem;
+}
+
+html[dir="rtl"] .header_service-item + .header_service-item {
+  margin-left: 0;
+  margin-right: 1rem;
 }
