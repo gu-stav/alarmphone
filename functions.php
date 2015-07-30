@@ -2,6 +2,25 @@
 add_image_size( 'post-thumb', 420, 420 );
 add_image_size( 'post', 850, 850 );
 
+function translate_staic_strings() {
+  $strings = array(
+    'Latest News',
+    'Alarmphone',
+    'Hotline for boatpeople in distress. no rescue, but alarm',
+    'Watch the med',
+    '+334 86 51 71 61',
+    'In case of emergency call',
+    'Select language',
+    'Material',
+    'Donate',
+    'Alarmphone Logo',
+  );
+
+  foreach($strings as $string) {
+    pll_register_string($string, $string);
+  }
+}
+
 function widgets_init() {
   register_sidebar( array(
     'name'          => 'General Sidebar',
@@ -399,4 +418,5 @@ register_nav_menus( array(
 add_action('init', 'create_post_types');
 add_action('widgets_init', 'widgets_init');
 
+translate_staic_strings();
 ?>

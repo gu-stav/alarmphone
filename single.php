@@ -21,7 +21,7 @@
 
               if($materials) {
             ?>
-              <h2><?php _e('Material') ?></h2>
+              <h2><?php pll_e('Material') ?></h2>
               <ul class="material">
 
                 <?php

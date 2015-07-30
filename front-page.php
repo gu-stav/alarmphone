@@ -34,7 +34,7 @@
       <div class="release grid_row">
         <h2 class="headline headline--h2 headline--serif headline--tt-normal release_headline release_headline--front-page">
           <span>
-            <?php _e("Latest News") ?>
+            <?php pll_e('Latest News') ?>
           </span>
         </h2>
 

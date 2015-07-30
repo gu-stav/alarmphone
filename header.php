@@ -54,7 +54,9 @@
             ?>
 
               <a href="<?php echo $donation_url; ?>"
-                 class="header_service-item button"><?php _e("Donate") ?></a>
+                 class="header_service-item button">
+                <?php pll_e('Donate') ?>
+              </a>
 
             <?php
               }
@@ -66,7 +68,7 @@
             ?>
               <div class="header_service-item">
                 <h6 class="u-accessible-hidden">
-                  <?php _e("Select language"); ?>
+                  <?php pll_e('Select language'); ?>
                 </h6>
               </div>
             <?php
@@ -79,16 +81,16 @@
         <div class="grid_row header_brand-phone-container">
           <div class="grid_column grid_column--3 header_phone">
             <div class="header_phone-inner">
-              <p class="header_phone-label"><?php _e("In case of emergency call"); ?></p>
-              <a href="tel:<?php _e("+334 86 51 71 61"); ?>"
-                 class="header_phone-number headline headline--h3"><?php _e("+334 86 51 71 61"); ?> </a>
+              <p class="header_phone-label"><?php pll_e('In case of emergency call'); ?></p>
+              <a href="tel:<?php pll_e('+334 86 51 71 61'); ?>"
+                 class="header_phone-number headline headline--h3"><?php pll_e('+334 86 51 71 61'); ?> </a>
             </div>
           </div>
 
           <div class="grid_column grid_column--9 header_brand u-cf">
             <img src="<?php bloginfo('template_url'); ?>/assets/ap-logo.svg"
                  class="header_logo"
-                 alt="<?php _e("Alarmphone Logo"); ?>" />
+                 alt="<?php pll_e('Alarmphone Logo'); ?>" />
 
             <div class="header_title">
               <?php
@@ -100,9 +102,15 @@
                 }
               ?>
 
-              <p class="header_title-preheadline">Watch the med</p>
-              <strong class="header_title-headline headline headline--h1">Alarmphone</strong>
-              <p class="header_title-postheadline">Hotline for boatpeople in distress. no rescue, but alarm</p>
+              <p class="header_title-preheadline">
+                <?php pll_e('Watch the med'); ?>
+              </p>
+              <strong class="header_title-headline headline headline--h1">
+                <?php pll_e('Alarmphone'); ?>
+              </strong>
+              <p class="header_title-postheadline">
+                <?php pll_e('Hotline for boatpeople in distress. no rescue, but alarm'); ?>
+              </p>
 
               <?php
                 if(!is_front_page() && !is_home()) {

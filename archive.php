@@ -34,7 +34,7 @@
             }
           ?>
 
-          <h1 class="headline headline--h1"><?php _e($category_name) ?></h1>
+          <h1 class="headline headline--h1"><?php echo $category_name; ?></h1>
 
           <div class="release">
             <?php
