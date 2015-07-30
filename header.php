@@ -65,25 +65,19 @@
             <?php
               if(function_exists('pll_the_languages')) {
                 echo render_language_select();
-            ?>
-              <div class="header_service-item">
-                <h6 class="u-accessible-hidden">
-                  <?php pll_e('Select language'); ?>
-                </h6>
-              </div>
-            <?php
               }
             ?>
-
           </div>
         </div>
 
         <div class="grid_row header_brand-phone-container">
           <div class="grid_column grid_column--3 header_phone">
             <div class="header_phone-inner">
-              <p class="header_phone-label"><?php pll_e('In case of emergency call'); ?></p>
-              <a href="tel:<?php pll_e('+334 86 51 71 61'); ?>"
-                 class="header_phone-number headline headline--h3"><?php pll_e('+334 86 51 71 61'); ?> </a>
+              <div class="header_phone-text">
+                <p class="header_phone-label"><?php pll_e('In case of emergency call'); ?></p>
+                <a href="tel:<?php pll_e('+334 86 51 71 61'); ?>"
+                   class="header_phone-number headline headline--h3"><?php pll_e('+334 86 51 71 61'); ?></a>
+              </div>
             </div>
           </div>
 
