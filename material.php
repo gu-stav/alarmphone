@@ -1,16 +1,22 @@
+<?php
+/*
+Template Name: Material
+*/
+?>
+
 <?php get_header(); ?>
+
+<?php
+  $title = $post->post_title;
+
+  if(!$title) {
+    $title = pll__('Material');
+  }
+?>
 
 <div class="grid">
   <div class="grid_row">
     <div class="grid_column grid_column--9 app_content content">
-      <div class="grid_row">
-        <div class="grid_column grid_column--12">
-          <?php
-            echo render_post_as_grid_item(get_post(), '12', '', 'full');
-          ?>
-        </div>
-      </div>
-
       <div class="grid_row">
         <div class="grid_column grid_column--12">
 
@@ -20,7 +26,10 @@
 
             if($materials) {
           ?>
-            <h2><?php pll_e('Material') ?></h2>
+            <h1 class="headline headline--h1 headline--tt-normal headline--serif">
+              <?php echo $title;  ?>
+            </h1>
+
             <ul class="material">
 
               <?php
