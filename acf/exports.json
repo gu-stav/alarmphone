@@ -107,6 +107,24 @@
         "title": "Intro",
         "fields": [
             {
+                "key": "field_55b8e06c64404",
+                "label": "Excerpt",
+                "name": "excerpt",
+                "type": "wysiwyg",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "tabs": "all",
+                "toolbar": "full",
+                "media_upload": 1
+            },
+            {
                 "key": "field_55b4a94105b04",
                 "label": "Image or Video",
                 "name": "image_or_video",

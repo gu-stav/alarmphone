@@ -420,5 +420,7 @@ register_nav_menus( array(
 add_action('init', 'create_post_types');
 add_action('widgets_init', 'widgets_init');
 
-translate_staic_strings();
+if(function_exists('pll_register_string')) {
+  translate_staic_strings();
+}
 ?>

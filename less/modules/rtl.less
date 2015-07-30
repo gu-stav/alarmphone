@@ -91,6 +91,11 @@ html[dir="rtl"] {
       right: auto;
     }
   }
+
+  .post {
+    padding-left: 1rem;
+    padding-right: 0;
+  }
 }
 
 html[dir="rtl"] .header_service-social-item + .header_service-social-item {
@@ -101,6 +106,10 @@ html[dir="rtl"] .header_service-social-item + .header_service-social-item {
 html[dir="rtl"] .header_service-item + .header_service-item {
   margin-left: 0;
   margin-right: 1rem;
+}
+
+html[dir="rtl"] .app_content > .grid_row .post:last-child {
+  padding-left: 0;
 }
 
 @media only screen and (max-width: 600px) {
