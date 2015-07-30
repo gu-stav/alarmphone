@@ -4,7 +4,7 @@
 
   &_list {
     background-color: @app-background-base;
-    border: 1px solid red;
+    border: 1px solid @border-color-base;
     display: none;
     right: 0;
     list-style: none;
@@ -14,23 +14,50 @@
     top: 100%;
     min-width: 100%;
 
-    &--is-open {
-      display: block;
-    }
+
 
     &-item {
      display: block;
     }
 
     &-item + &-item {
-      border-top: 1px solid red;
+      border-top: 1px solid @border-color-base;
     }
   }
 
+  &--is-open &_list {
+    display: block;
+  }
+
+  &--is-open &_label > span:after {
+    content: '▲';
+  }
+
   &_label {
-    border: 1px solid red;
+    background-color: @app-background-base;
+    background-image: none;
+    border: 1px solid @border-color-base;
     font-family: @font-family-headline-bold;
-    padding: .4rem .8rem;
+    font-size: 1rem;
+    padding: .2rem .4rem;
+
+    &:hover,
+    &:focus {
+      background-color: darken(@app-background-base, 7%);
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    > span:after {
+      color: lighten(@text-color-base, 40%);
+      content: '▼';
+      display: inline-block;
+      font-size: .7rem;
+      margin-left: .5rem;
+      position: relative;
+      top: -.1rem;
+      vertical-align: middle;
+    }
   }
 
   a {

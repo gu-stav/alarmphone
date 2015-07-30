@@ -26,6 +26,10 @@ html[dir="rtl"] {
       }
     }
 
+    &_service {
+      float: left;
+    }
+
     &_navigation {
       &-container > .menu-item > a {
         padding-left: 3rem;
@@ -38,6 +42,18 @@ html[dir="rtl"] {
     &_rss .rss-date {
       left: auto;
       right: 0;
+    }
+  }
+
+  .language-select {
+    &_label > span::after {
+      margin-left: 0;
+      margin-right: .5rem;
+    }
+
+    &_list {
+      left: 0;
+      right: auto;
     }
   }
 
@@ -63,6 +79,13 @@ html[dir="rtl"] {
     &_date {
       left: auto;
       right: 0;
+    }
+  }
+
+  .intro {
+    &_content {
+      left: 3rem;
+      right: auto;
     }
   }
 }

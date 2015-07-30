@@ -388,21 +388,24 @@ function render_language_select() {
   $html_buffer = '<ul class="language-select_list">';
 
   foreach($raw as $lang) {
+    if($lang['current_lang']) {
+      $active = $lang;
+      continue;
+    }
+
     $html_buffer .= '<li class="language-select_list-item">';
       $html_buffer .= '<a href="' . $lang['url'] . '">';
         $html_buffer .= $lang['name'];
       $html_buffer .= '</a>';
     $html_buffer .= '</li>';
-
-    if($lang['current_lang']) {
-      $active = $lang;
-    }
   }
 
   $html_buffer .= '</ul>';
 
   $html = '<div class="language-select header_service-item">';
-  $html .= '<button class="language-select_label">' . $active['name'] . '</button>';
+  $html .= '<button class="language-select_label">';
+  $html .= '<span>' . $active['name'] . '</span>';
+  $html .= '</button>';
   $html .= $html_buffer;
   $html .= '</div>';
 
