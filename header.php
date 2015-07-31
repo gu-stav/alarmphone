@@ -11,6 +11,10 @@
   } else {
     $page_title .= ' | ' . __($page_name);
   }
+
+  if(!is_front_page() && !is_home()) {
+    $home = esc_url( home_url( '/' ) );
+  }
 ?>
 
 <!doctype html>
@@ -82,16 +86,35 @@
           </div>
 
           <div class="grid_column grid_column--9 header_brand u-cf">
-            <img src="<?php bloginfo('template_url'); ?>/assets/ap-logo.svg"
-                 class="header_logo"
-                 alt="<?php pll_e('Alarmphone Logo'); ?>" />
+            <?php
+              if(isset($home)) {
+            ?>
+              <a href="<?php echo $home ?>"
+                 rel="nofollow">
+            <?php
+              }
+            ?>
+
+              <img src="<?php bloginfo('template_url'); ?>/assets/ap-logo.svg"
+                   class="header_logo"
+                   alt="<?php pll_e('Alarmphone Logo'); ?>" />
+
+            <?php
+              if(isset($home)) {
+            ?>
+              </a>
+            <?php
+              }
+            ?>
+
 
             <div class="header_title">
               <?php
-                if(!is_front_page() && !is_home()) {
-                  $home = esc_url( home_url( '/' ) );
+                if(isset($home)) {
               ?>
-                  <a href="<?php echo $home; ?>" class="header_title-link">
+                  <a href="<?php echo $home; ?>"
+                    class="header_title-link">
+
               <?php
                 }
               ?>
@@ -107,7 +130,7 @@
               </p>
 
               <?php
-                if(!is_front_page() && !is_home()) {
+                if(isset($home)) {
               ?>
                 </a>
               <?php
