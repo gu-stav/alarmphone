@@ -103,7 +103,7 @@
                 <?php pll_e('Alarmphone'); ?>
               </strong>
               <p class="header_title-postheadline">
-                <?php pll_e('Hotline for boatpeople in distress. no rescue, but alarm'); ?>
+                <?php pll_e('Hotline for boatpeople in distress. No rescue, but Alarm.'); ?>
               </p>
 
               <?php

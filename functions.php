@@ -6,7 +6,7 @@ function translate_staic_strings() {
   $strings = array(
     'Latest News',
     'Alarmphone',
-    'Hotline for boatpeople in distress. no rescue, but alarm',
+    'Hotline for boatpeople in distress. No rescue, but Alarm.',
     'Watch the med',
     '+334 86 51 71 61',
     'In case of emergency call',
