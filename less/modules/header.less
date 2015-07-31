@@ -22,14 +22,19 @@
       &-image {
         border: 1px solid @brand-color-base;
         border-radius: 2rem;
-        height: auto;
-        padding: .35rem;
+        height: 2rem;
+        padding: .25rem;
         width: 2rem;
       }
 
       a:hover &-image,
       a:focus &-image {
-        border-color: darken(@brand-color-base, 25%);
+        background-color: @brand-color-base;
+      }
+
+      a:hover &-image path,
+      a:focus &-image path {
+        fill: @text-color-on-brand-color-base;
       }
 
       &-item {

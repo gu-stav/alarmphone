@@ -359,11 +359,14 @@ function render_social_menu() {
     $has_images = array( 'twitter', 'facebook', 'tumblr' );
     $index = strtolower( $item->title );
     $template_dir = get_bloginfo( 'template_directory' );
+    $svg  = file_get_contents($template_dir . '/assets/' . $index .'.svg');
 
     $html .= '<a href="' . $item->url . '">';
 
     if( in_array( $index, $has_images ) ) {
-      $html .= '<img src="'. $template_dir . '/assets/' . $index . '.svg"' . 'class="header_service-social-image"' . ' />';
+      $html .= '<div class="header_service-social-image">';
+      $html .= $svg;
+      $html .= '</div>';
       $html .= '<span class="u-accessible-hidden">' . $item->title . '</span>';
     } else {
       $html .= $item->title;
