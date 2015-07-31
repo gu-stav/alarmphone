@@ -358,8 +358,7 @@ function render_social_menu() {
     $html .= '<li class="header_service-social-item">';
     $has_images = array( 'twitter', 'facebook', 'tumblr' );
     $index = strtolower( $item->title );
-    $template_dir = get_bloginfo( 'template_directory' );
-    $svg  = file_get_contents($template_dir . '/assets/' . $index .'.svg');
+    $svg  = file_get_contents(__DIR__ . '/assets/' . $index .'.svg');
 
     $html .= '<a href="' . $item->url . '">';
 
