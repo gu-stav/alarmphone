@@ -21,7 +21,7 @@
 
   <div class="grid_row">
     <div class="grid_column grid_column--9 app_content">
-      <div class="grid_row">
+      <div class="grid_row post_grid">
         <?php
           if($campaigns) {
             foreach($campaigns as $campaign) {
