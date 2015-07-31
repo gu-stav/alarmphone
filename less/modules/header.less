@@ -2,8 +2,8 @@
   margin: 1.5rem 0 2.5rem 0;
 
   &_service {
-    float: right;
     margin-bottom: .8rem;
+    text-align: right;
 
     &-item {
       display: inline-block;
@@ -216,11 +216,13 @@
       width: 70%;
     }
 
-    &_brand {
+    &_brand,
+    &_service-social-col {
       width: 60%;
     }
 
-    &_phone {
+    &_phone,
+    &_service-service {
       width: 40%;
     }
 
@@ -252,6 +254,14 @@
     &_brand,
     &_phone {
       float: none;
+      width: 100%;
+    }
+
+    &_service-social-col {
+      display: none;
+    }
+
+    &_service-service {
       width: 100%;
     }
 

@@ -49,28 +49,35 @@
       <header class="grid app_header header">
         <div class="grid_row">
           <div class="header_service">
-            <div class="header_service-item">
-              <?php echo render_social_menu(); ?>
+            <div class="grid">
+              <div class="grid_row">
+                <div class="grid_column grid_column--9 header_service-social-col">
+                  <div class="header_service-item">
+                    <?php echo render_social_menu(); ?>
+                  </div>
+                </div>
+                <div class="grid_column grid_column--3 header_service-service">
+                  <?php
+                    if($donation_url) {
+                  ?>
+
+                    <a href="<?php echo $donation_url; ?>"
+                       class="header_service-item button">
+                      <?php pll_e('Donate') ?>
+                    </a>
+
+                  <?php
+                    }
+                  ?>
+
+                  <?php
+                    if(function_exists('pll_the_languages')) {
+                      echo render_language_select();
+                    }
+                  ?>
+                </div>
+              </div>
             </div>
-
-            <?php
-              if($donation_url) {
-            ?>
-
-              <a href="<?php echo $donation_url; ?>"
-                 class="header_service-item button">
-                <?php pll_e('Donate') ?>
-              </a>
-
-            <?php
-              }
-            ?>
-
-            <?php
-              if(function_exists('pll_the_languages')) {
-                echo render_language_select();
-              }
-            ?>
           </div>
         </div>
 
