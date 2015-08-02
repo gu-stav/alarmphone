@@ -38,3 +38,6 @@ Translation for Menus is supported through the Polylang Plugin.
 
 ### Sidebar ###
 - Widgets are supported. Styling was tested with the RSS-Widget.
+
+## Translations ##
+All used Strings in the Template can be translated in the Polylang-Backend. Right-to-Left language support should work. To use the translation interface please go to ``Settings -> Languages -> String Translation``.
