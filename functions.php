@@ -62,6 +62,16 @@ if(function_exists('acf_add_options_page')) {
   acf_add_options_sub_page('General Options');
 }
 
+function get_home_posts() {
+  $options = array(
+    'post_per_page' => 5,
+    'order' => 'DESC',
+    'category_name' => 'home',
+  );
+
+  return get_posts_of_type(array('post', 'page'), $options);
+}
+
 function get_blog_posts() {
   $options = array(
     'post_per_page' => 5,

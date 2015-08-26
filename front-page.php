@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <?php
-  $posts = get_blog_posts();
+  $posts = get_home_posts();
   $campaigns = get_campaigns();
   $intro = get_intro();
 ?>
