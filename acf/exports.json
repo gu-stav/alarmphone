@@ -66,43 +66,6 @@
         "hide_on_screen": ""
     },
     {
-        "key": "group_55b3db2d52769",
-        "title": "Donation Button",
-        "fields": [
-            {
-                "key": "field_55b3db39ec8d0",
-                "label": "Donation Button URL",
-                "name": "donation_button_url",
-                "type": "url",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": "URL"
-            }
-        ],
-        "location": [
-            [
-                {
-                    "param": "options_page",
-                    "operator": "==",
-                    "value": "acf-options-general-options"
-                }
-            ]
-        ],
-        "menu_order": 0,
-        "position": "normal",
-        "style": "default",
-        "label_placement": "top",
-        "instruction_placement": "label",
-        "hide_on_screen": ""
-    },
-    {
         "key": "group_55b4a93dd42b5",
         "title": "Intro",
         "fields": [
@@ -343,6 +306,74 @@
                     "param": "post_type",
                     "operator": "==",
                     "value": "campaigns"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": ""
+    },
+    {
+        "key": "group_55b3db2d52769",
+        "title": "Options",
+        "fields": [
+            {
+                "key": "field_55b3db39ec8d0",
+                "label": "Donation Button URL",
+                "name": "donation_button_url",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "URL"
+            },
+            {
+                "key": "field_55de16461bb2e",
+                "label": "Front-Page News Category",
+                "name": "front-page_news_category",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "home": "Home",
+                    "press-release": "Press release",
+                    "safety-at-sea": "Safety at sea",
+                    "uncategorized": "Uncategorized",
+                    "uncategorized-en": "Uncategorized"
+                },
+                "default_value": {
+                    "home": "Home"
+                },
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": "",
+                "disabled": 0,
+                "readonly": 0
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "acf-options-general-options"
                 }
             ]
         ],
