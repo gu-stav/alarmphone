@@ -63,10 +63,16 @@ if(function_exists('acf_add_options_page')) {
 }
 
 function get_home_posts() {
+  $category_name = get_field('front-page_news_category', 'option');
+
+  if(!$category_name) {
+    return;
+  }
+
   $options = array(
     'post_per_page' => 5,
     'order' => 'DESC',
-    'category_name' => 'home',
+    'category_name' => $category_name,
   );
 
   return get_posts_of_type(array('post', 'page'), $options);
@@ -99,6 +105,7 @@ function get_posts_of_type($type, $options) {
     'post_status' => 'publish',
     'post_per_page' => 10,
     'order' => 'ASC',
+    'lang' => pll_current_language(),
   );
 
   if(!$options) {
@@ -357,6 +364,19 @@ function render_intro($intro) {
   return $html;
 }
 
+function acf_load_frontpage_category($field) {
+  $field['choices'] = array();
+  $choices = get_categories();
+
+  if(is_array($choices)) {
+    foreach($choices as $choice) {
+      $field['choices'][ $choice->slug ] = $choice->name;
+    }
+  }
+
+  return $field;
+}
+
 function render_social_menu() {
   $html = '<ul class="header_service-social">';
 
@@ -431,6 +451,7 @@ register_nav_menus( array(
 
 add_action('init', 'create_post_types');
 add_action('widgets_init', 'widgets_init');
+add_filter('acf/load_field/name=front-page_news_category', 'acf_load_frontpage_category');
 
 if(function_exists('pll_register_string')) {
   translate_staic_strings();
