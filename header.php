@@ -61,18 +61,7 @@
                   </div>
                 </div>
                 <div class="grid_column grid_column--3 header_service-service">
-                  <?php
-                    if($donation_url) {
-                  ?>
-
-                    <a href="<?php echo $donation_url; ?>"
-                       class="header_service-item button">
-                      <?php pll_e('Donate') ?>
-                    </a>
-
-                  <?php
-                    }
-                  ?>
+                  <?php echo render_donation_menu(); ?>
 
                   <?php
                     if(function_exists('pll_the_languages')) {

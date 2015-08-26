@@ -382,6 +382,11 @@ function render_social_menu() {
 
   $menu_slug = 'social';
   $locations = get_nav_menu_locations();
+
+  if(!$locations[$menu_slug]) {
+    return '';
+  }
+
   $menu_items = wp_get_nav_menu_items($locations[$menu_slug]);
 
   foreach($menu_items as $item) {
@@ -406,6 +411,26 @@ function render_social_menu() {
   }
 
   $html .= '</ul>';
+
+  return $html;
+}
+
+function render_donation_menu() {
+  $menu_slug = 'donation';
+  $locations = get_nav_menu_locations();
+
+  if(!$locations[$menu_slug]) {
+    return '';
+  }
+
+  $menu_items = wp_get_nav_menu_items($locations[$menu_slug]);
+  $html = '';
+
+  foreach($menu_items as $item) {
+    $html .= '<a href="' . $item->url . '" class="header_service-item button">';
+    $html .= $item->title;
+    $html .= '</a>';
+  }
 
   return $html;
 }
@@ -446,6 +471,7 @@ function render_language_select() {
 register_nav_menus( array(
   'primary' => __( 'Primary Menu' ),
   'social'  => __( 'Social Links Menu' ),
+  'donation'  => __( 'Donation Menu' ),
   'footer'  => __( 'Footer Menu' ),
 ) );
 
