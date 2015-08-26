@@ -16,7 +16,7 @@
 
           <?php
             $post_id = $post->ID;
-            $materials = $image_id = get_field('material', $post_id);
+            $materials = get_field('material', $post_id);
 
             if($materials) {
           ?>
