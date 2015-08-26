@@ -321,22 +321,6 @@
         "title": "Options",
         "fields": [
             {
-                "key": "field_55b3db39ec8d0",
-                "label": "Donation Button URL",
-                "name": "donation_button_url",
-                "type": "url",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": "URL"
-            },
-            {
                 "key": "field_55de16461bb2e",
                 "label": "Front-Page News Category",
                 "name": "front-page_news_category",
