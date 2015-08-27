@@ -436,11 +436,8 @@ function render_donation_menu() {
 }
 
 function render_language_select() {
-  $select_args = array(
-    'raw' => True,
-  );
+  $select_args = array('raw' => True);
   $raw = pll_the_languages($select_args);
-
   $html_buffer = '<ul class="language-select_list">';
 
   foreach($raw as $lang) {
