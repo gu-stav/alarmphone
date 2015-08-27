@@ -24,7 +24,7 @@ Template Name: Safety at Sea
       <div class="grid_row">
         <div class="grid_column grid_column--12">
           <div class="release">
-            <div class="grid_row">
+            <div class="grid_row post_grid">
               <?php
                 $category_name = 'Safety at Sea';
                 $category_id = get_cat_ID($category_name);
@@ -34,6 +34,7 @@ Template Name: Safety at Sea
                   'post_type' => 'post',
                   'posts_per_page' => -1,
                   'post_status' => 'publish',
+                  'lang' => pll_current_language(),
                 ));
 
                 if($posts) {
