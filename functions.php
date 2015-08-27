@@ -185,6 +185,8 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
     if($type != 'full') {
       $html .= '<a href="' . $link . '" ' .
                   'class="post_title--link post_title headline headline--h' . $headline_hierachy . '">';
+    } else {
+      $html .= '<h1 class="post_title headline headline--h1 headline--serif headline--tt-normal">';
     }
 
       if($image_id) {
@@ -201,7 +203,7 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
       $html .= '<strong>' . $title . '</strong>';
       $html .= '</a>';
     } else {
-      $html .= '<strong class="post_title--link post_title headline headline--h' . $headline_hierachy . ' headline--serif headline--tt-normal">' . $title . '</strong>';
+      $html .= $title . '</h1>';
     }
 
     if($render_post_date) {

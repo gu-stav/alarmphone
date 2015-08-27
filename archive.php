@@ -8,6 +8,11 @@
           <?php
             $qu = get_queried_object();
             $options = array();
+
+            if(!$qu) {
+              return;
+            }
+
             $args = array(
               'post_type' => $qu->name,
               'posts_per_page' => -1,
