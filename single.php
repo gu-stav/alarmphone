@@ -2,7 +2,7 @@
 
 <div class="grid">
   <div class="grid_row">
-    <div class="grid_column grid_column--9 app_content content">
+    <article class="grid_column grid_column--9 app_content content">
       <div class="grid_row">
         <div class="grid_column grid_column--12">
           <?php
@@ -33,7 +33,7 @@
            ?>
         </div>
       </div>
-    </div>
+    </article>
 
     <div class="grid_column grid_column--3 app_aside aside">
       <?php get_sidebar(); ?>
