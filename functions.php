@@ -72,7 +72,7 @@ function get_home_posts() {
   $options = array(
     'post_per_page' => 5,
     'order' => 'DESC',
-    'category' => $category_id,
+    'cat' => $category_id,
   );
 
   return get_posts_of_type('post', $options);

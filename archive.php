@@ -23,8 +23,9 @@
             switch($qu->taxonomy) {
               case 'category':
                 $category_name = $qu->cat_name;
+
                 $options = array(
-                  'category_id' => $qu->cat_ID,
+                  'cat' => $qu->cat_ID,
                   'post_type' => 'post',
                 );
                 break;
