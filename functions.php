@@ -63,19 +63,19 @@ if(function_exists('acf_add_options_page')) {
 }
 
 function get_home_posts() {
-  $category_name = get_field('front-page_news_category', 'option');
+  $category_id = get_field('front-page_news_category', 'option');
 
-  if(!$category_name) {
+  if(!$category_id) {
     return;
   }
 
   $options = array(
     'post_per_page' => 5,
     'order' => 'DESC',
-    'category_name' => $category_name,
+    'category' => $category_id,
   );
 
-  return get_posts_of_type(array('post', 'page'), $options);
+  return get_posts_of_type('post', $options);
 }
 
 function get_blog_posts() {
@@ -367,12 +367,12 @@ function render_intro($intro) {
 }
 
 function fill_categories($field) {
-  $field['choices'] = array();
   $choices = get_categories();
 
   if(is_array($choices)) {
+    $field['choices'] = array();
     foreach($choices as $choice) {
-      $field['choices'][ $choice->slug ] = $choice->name;
+      $field['choices'][ $choice->cat_ID ] = $choice->name;
     }
   }
 
