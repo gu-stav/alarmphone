@@ -364,7 +364,7 @@ function render_intro($intro) {
   return $html;
 }
 
-function acf_load_frontpage_category($field) {
+function fill_categories($field) {
   $field['choices'] = array();
   $choices = get_categories();
 
@@ -477,7 +477,10 @@ register_nav_menus( array(
 
 add_action('init', 'create_post_types');
 add_action('widgets_init', 'widgets_init');
-add_filter('acf/load_field/name=front-page_news_category', 'acf_load_frontpage_category');
+
+add_filter('acf/load_field/name=front-page_news_category', 'fill_categories');
+add_filter('acf/load_field/name=front-page_intro_category', 'fill_categories');
+add_filter('acf/load_field/name=front-page_grid_category', 'fill_categories');
 
 if(function_exists('pll_register_string')) {
   translate_staic_strings();
