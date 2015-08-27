@@ -383,7 +383,7 @@ function render_social_menu() {
   $menu_slug = 'social';
   $locations = get_nav_menu_locations();
 
-  if(!$locations[$menu_slug]) {
+  if(!is_array($locations) || !array_key_exists($menu_slug, $locations)) {
     return '';
   }
 
@@ -419,7 +419,7 @@ function render_donation_menu() {
   $menu_slug = 'donation';
   $locations = get_nav_menu_locations();
 
-  if(!$locations[$menu_slug]) {
+  if(!is_array($locations) || !array_key_exists($menu_slug, $locations)) {
     return '';
   }
 
