@@ -11,7 +11,6 @@ function translate_staic_strings() {
     '+334 86 51 71 61',
     'In case of emergency call',
     'Material',
-    'Donate',
     'Alarmphone Logo',
   );
 
