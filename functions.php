@@ -2,7 +2,7 @@
 add_image_size( 'post-thumb', 420, 420 );
 add_image_size( 'post', 850, 850 );
 
-function translate_staic_strings() {
+function translate_static_strings() {
   $strings = array(
     'Latest News',
     'Alarmphone',
@@ -20,6 +20,101 @@ function translate_staic_strings() {
 }
 
 function widgets_init() {
+  class Full_Recent_Posts extends WP_Widget {
+    function __construct() {
+        parent::__construct(
+          'full-recent-posts',
+          __('Recent Posts (Full)', 'alarmphone'),
+          array(
+            'description' => __('Displays the recent 3 posts', 'alarmphone' ),
+          )
+        );
+    }
+
+    public function widget($args, $instance) {
+      $count = !empty($instance['count']) ? $instance['count'] : 3;
+      $category_id = !empty($instance['category']) ? $instance['category'] : null;
+      $options = array(
+        'post_per_page' => 5,
+        'order' => 'DESC',
+        'cat' => $category_id,
+      );
+      $posts = get_posts_of_type('post', $options);
+
+      if($posts) {
+        echo $args['before_widget'];
+
+        if(!empty($instance['title'])) {
+          echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+        }
+
+        echo '<div class="grid">';
+          echo '<div class="grid_row">';
+            foreach($posts as $post) {
+              echo render_sidebar_post($post, '12', 'release_item widget_full-recent-posts_post', 'preview');
+            }
+          echo '</div>';
+        echo '</div>';
+
+        echo $args['after_widget'];
+      }
+    }
+
+    public function form( $instance ) {
+      $title = !empty($instance['title']) ? $instance['title'] : __( 'New title', 'text_domain' );
+      $count = !empty($instance['count']) ? $instance['count'] : 3;
+      $category = !empty($instance['category']) ? $instance['category'] : null;
+      $categories = get_categories();
+      ?>
+
+      <p>
+        <label for="<?php echo $this->get_field_id('title'); ?>">
+          <?php _e( 'Title:' ); ?>
+        </label>
+        <input class="widefat"
+               id="<?php echo $this->get_field_id('title'); ?>"
+               name="<?php echo $this->get_field_name('title'); ?>"
+               type="text"
+               value="<?php echo esc_attr($title); ?>">
+      </p>
+
+      <p>
+        <label for="<?php echo $this->get_field_id('count'); ?>">
+          <?php _e( 'Number of posts to show:' ); ?>
+        </label>
+        <input class="widefat"
+               id="<?php echo $this->get_field_id('count'); ?>"
+               name="<?php echo $this->get_field_name('count'); ?>"
+               type="text"
+               value="<?php echo esc_attr($count); ?>">
+      </p>
+
+      <p>
+        <label for="<?php echo $this->get_field_id('category'); ?>">
+          <?php _e( 'Show posts of category:' ); ?>
+        </label>
+        <select id="<?php echo $this->get_field_id('category'); ?>"
+                name="<?php echo $this->get_field_name('category'); ?>">
+          <?php
+            foreach($categories as $category) {
+              $selected = '';
+
+              if($category->cat_ID == $category) {
+                $selected = 'selected="selected"';
+              }
+
+              echo '<option ' . $selected . ' value="' . $category->cat_ID . '">' . $category->name . '</option>';
+            }
+          ?>
+        </select>
+      </p>
+
+      <?php
+    }
+  }
+
+  register_widget('Full_Recent_Posts');
+
   register_sidebar( array(
     'name'          => 'General Sidebar',
     'id'            => 'general',
@@ -171,8 +266,8 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
 
   if($type == 'full') {
     $image_size = 'post';
-    $text = apply_filters( 'the_content', $text );
-    $teaser = apply_filters( 'the_content', $teaser );
+    $text = apply_filters('the_content', $text);
+    $teaser = apply_filters('the_content', $teaser);
   }
 
   $html .= '<div class="grid_column grid_column--' . $size . ' post ' . ($type == 'full' ? 'post--full' : '') . ' ' . $css_class . '">';
@@ -250,6 +345,18 @@ function render_sae($post, $size, $css_class, $type) {
     'render_post_teaser' => True,
     'render_post_text' => False,
     'render_post_category' => False,
+  );
+
+  return render_post_as_grid_item($post, $size, $css_class, $type, $options);
+}
+
+function render_sidebar_post($post, $size, $css_class, $type) {
+  $options = array(
+    'render_post_teaser' => True,
+    'render_post_text' => False,
+    'render_post_category' => False,
+    'render_post_date' => False,
+    'headline_hierachy' => 5,
   );
 
   return render_post_as_grid_item($post, $size, $css_class, $type, $options);
@@ -477,6 +584,6 @@ add_filter('acf/load_field/name=front-page_intro_category', 'fill_categories');
 add_filter('acf/load_field/name=front-page_grid_category', 'fill_categories');
 
 if(function_exists('pll_register_string')) {
-  translate_staic_strings();
+  translate_static_strings();
 }
 ?>

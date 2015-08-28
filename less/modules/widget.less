@@ -1,4 +1,20 @@
 .widget {
+  /* Full recent posts */
+  &_full-recent-posts {
+    .post_teaser {
+      font-size: 1rem;
+      line-height: @line-height-content;
+    }
+
+    &_post {
+      border-top: none;
+    }
+
+    &_post + &_post {
+      border-top: 4px solid @brand-color-base;
+    }
+  }
+
   /* Text Widget */
   &_text {
     font-size: 1rem;
