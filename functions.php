@@ -95,7 +95,7 @@ function get_intro() {
     'post_per_page' => 1,
   );
 
-  return get_posts_of_type('intros');
+  return get_posts_of_type('intros', $args);
 }
 
 function get_posts_of_type($type, $options=array()) {
