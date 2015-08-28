@@ -87,7 +87,7 @@ function get_blog_posts() {
 }
 
 function get_campaigns() {
-  return get_posts_of_type('campaigns', null);
+  return get_posts_of_type('campaigns');
 }
 
 function get_intro() {
@@ -95,10 +95,10 @@ function get_intro() {
     'post_per_page' => 1,
   );
 
-  return get_posts_of_type('intros', null);
+  return get_posts_of_type('intros');
 }
 
-function get_posts_of_type($type, $options) {
+function get_posts_of_type($type, $options=array()) {
   $args = array(
     'post_type' => $type,
     'post_status' => 'publish',
@@ -106,10 +106,6 @@ function get_posts_of_type($type, $options) {
     'order' => 'ASC',
     'lang' => pll_current_language(),
   );
-
-  if(!$options) {
-    $options = array();
-  }
 
   $result = new WP_Query(array_merge($args, $options));
   return $result->posts;
