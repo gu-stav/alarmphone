@@ -34,10 +34,13 @@ function widgets_init() {
     public function widget($args, $instance) {
       $count = !empty($instance['count']) ? $instance['count'] : 3;
       $category_id = !empty($instance['category']) ? $instance['category'] : null;
-      $category_id_translated = pll_get_term($category_id);
 
-      if($category_id_translated) {
-        $category_id = $category_id_translated;
+      if(function_exists('pll_get_term')) {
+        $category_id_translated = pll_get_term($category_id);
+
+        if($category_id_translated) {
+          $category_id = $category_id_translated;
+        }
       }
 
       $options = array(
@@ -164,14 +167,17 @@ if(function_exists('acf_add_options_page')) {
 
 function get_home_posts() {
   $category_id = get_field('front-page_news_category', 'option');
-  $category_id_translated = pll_get_term($category_id);
 
   if(!$category_id) {
     return;
   }
 
-  if($category_id_translated) {
-    $category_id = $category_id_translated;
+  if(function_exists('pll_get_term')) {
+    $category_id_translated = pll_get_term($category_id);
+
+    if($category_id_translated) {
+      $category_id = $category_id_translated;
+    }
   }
 
   $options = array(
