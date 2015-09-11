@@ -383,6 +383,10 @@ function render_material($material, $post_id) {
   $file = $material['file'];
   $preview = $material['file_preview'];
 
+  if(!$file) {
+    return;
+  }
+
   if(function_exists('pll_get_post')) {
     $file = get_post(pll_get_post($file['id']));
   } else {
