@@ -284,7 +284,7 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
   if($type == 'full') {
     $image_size = 'post';
     $text = apply_filters('the_content', $text);
-    $teaser = apply_filters('the_content', $teaser);
+    $teaser = apply_filters('the_teaser', $teaser);
   }
 
   $html .= '<div class="grid_column grid_column--' . $size . ' post ' . ($type == 'full' ? 'post--full' : '') . ' ' . $css_class . '">';

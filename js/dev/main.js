@@ -2,6 +2,7 @@ requirejs.config({
   baseUrl: '/js/',
   paths: {
     jquery: '../../bower_components/jquery/dist/jquery',
+    shariff: '../../../../plugins/shariff/shariff',
   },
   shim: {
     'jquery': {
@@ -75,3 +76,5 @@ require(['jquery'], function($) {
     });
   });
 });
+
+require(['shariff'], function() {});
