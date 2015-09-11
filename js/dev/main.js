@@ -71,8 +71,7 @@ require(['jquery'], function($) {
 
     $trigger.on('click', function(e) {
       e.preventDefault();
-
-      $container.toggleClass('language-select--is-open')
+      $container.toggleClass('language-select--is-open');
     });
   });
 });
