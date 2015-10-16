@@ -33,13 +33,32 @@
       float: right;
       font-family: @font-family-headline-light;
       font-size: 1rem;
-      margin-top: .8rem;
-      text-decoration: none;
+      margin-top: .6rem;
+      text-decoration: underline;
 
       &:hover,
       &:focus {
-        text-decoration: underline;
+        color: @brand-color-base;
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .release {
+    &_title,
+    &_teaser {
+      margin-left: 0;
+    }
+
+    &_date {
+      background-color: transparent;
+      color: @text-color-base;
+      font-family: @font-family-base;
+      font-style: italic;
+      padding: 0;
+      position: static;
+      text-transform: none;
     }
   }
 }

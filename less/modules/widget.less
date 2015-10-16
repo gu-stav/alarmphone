@@ -2,7 +2,8 @@
   /* Full recent posts */
   &_full-recent-posts {
     .post_teaser {
-      font-size: 1rem;
+      font-family: @font-family-base;
+      font-size: .95rem;
       line-height: @line-height-content;
     }
 
@@ -17,7 +18,8 @@
 
   /* Text Widget */
   &_text {
-    font-size: 1rem;
+    font-family: @font-family-base;
+    font-size: .95rem;
     line-height: @line-height-content;
 
     img {
@@ -33,7 +35,8 @@
 
       a {
         color: @text-color-base;
-        font-size: 1rem;
+        font-family: @font-family-base;
+        font-size: .95rem;
         line-height: @line-height-content;
         text-decoration: none;
 
@@ -64,6 +67,26 @@
       left: 0;
       position: absolute;
       top: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .widget {
+    &_text {
+      img {
+        max-width: 40%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .widget {
+    &_text {
+      img {
+        max-width: 100%;
+      }
     }
   }
 }

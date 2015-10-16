@@ -4,6 +4,7 @@ add_image_size( 'post', 850, 850 );
 
 function translate_static_strings() {
   $strings = array(
+    'All {{category_name}}',
     'Latest News',
     'Alarmphone',
     'Hotline for boatpeople in distress. No rescue, but Alarm.',
@@ -165,8 +166,22 @@ if(function_exists('acf_add_options_page')) {
   acf_add_options_sub_page('General Options');
 }
 
+function get_home_posts_category() {
+  return get_field('front-page_news_category', 'option');
+}
+
+function get_home_posts_all_link() {
+  $category_id = get_home_posts_category();
+  $category_name = get_cat_name($category_id);
+  $link = get_category_link($category_id);
+
+  $markup = '<a href="' . $link . '">' . pll__('All {{category_name}}') . ' ' . '</a>';
+  $markup = str_replace('{{category_name}}', $category_name, $markup);
+  return $markup;
+}
+
 function get_home_posts() {
-  $category_id = get_field('front-page_news_category', 'option');
+  $category_id = get_home_posts_category();
 
   if(!$category_id) {
     return;
@@ -283,8 +298,6 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
 
   if($type == 'full') {
     $image_size = 'post';
-    $text = apply_filters('the_content', $text);
-    $teaser = apply_filters('the_teaser', $teaser);
   }
 
   $html .= '<div class="grid_column grid_column--' . $size . ' post ' . ($type == 'full' ? 'post--full' : '') . ' ' . $css_class . '">';
@@ -318,10 +331,20 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
     }
 
     if($render_post_teaser && $teaser) {
+      if(array_key_exists('strip_tags', $options)) {
+        if($options['strip_tags']) {
+          $teaser = wp_strip_all_tags($teaser, True);
+          $teaser = '<p>' . $teaser . '</p>';
+        }
+      } else {
+        $teaser = apply_filters('the_teaser', $teaser);
+      }
+
       $html .= '<div class="post_teaser richtext">' . $teaser . '</div>';
     }
 
     if($render_post_text && isset($text)) {
+      $text = apply_filters('the_content', $text);
       $html .= '<div class="post_text richtext">' . $text . '</div>';
     }
 
@@ -335,6 +358,7 @@ function render_blog_post($post, $size, $css_class, $type, $options) {
     'date_format' => __('M d, y'),
     'render_post_category' => False,
     'render_post_text' => False,
+    'strip_tags' => False,
   );
 
   if(!$options) {
@@ -420,9 +444,12 @@ function render_material($material, $post_id) {
   } else {
     $file_mime = $file->post_mime_type;
 
+    /* Replace application/ so it renders only the type */
+    $file_mime = str_replace('application/', '', $file_mime);
+
     $html .= '<div class="material_preview material_preview--wo-media">';
       $html .= '<div class="material_preview-inner">';
-        $html .= '<p>' . $file_mime . '</p>';
+        $html .= '<p class="material_mime">' . $file_mime . '</p>';
       $html .= '</div>';
     $html .= '</div>';
   }
@@ -441,7 +468,7 @@ function render_intro($intro) {
   $id = $intro->ID;
   $title = $intro->post_title;
   $link = get_permalink($id);
-  $text = apply_filters('the_content', get_field('excerpt', $id));
+  $text = get_field('excerpt', $id);
   $image_or_video = get_field('image_or_video', $id);
   $col_width_media = $image_or_video == 'image' ? 12 : 9;
   $col_width_text = $image_or_video == 'image' ? 4 : 3;
@@ -518,11 +545,17 @@ function render_social_menu() {
     $html .= '<li class="header_service-social-item">';
     $has_images = array( 'twitter', 'facebook', 'tumblr' );
     $index = strtolower( $item->title );
-    $svg  = file_get_contents(__DIR__ . '/assets/' . $index .'.svg');
+    $svg_path = __DIR__ . '/assets/' . $index .'.svg';
+    $svg_exists = file_exists($svg_path);
+    $svg = False;
 
-    $html .= '<a href="' . $item->url . '">';
+    if($svg_exists) {
+      $svg  = file_get_contents($svg_path);
+    }
 
-    if( in_array( $index, $has_images ) ) {
+    $html .= '<a href="' . $item->url . '" target="_blank">';
+
+    if(in_array($index, $has_images)) {
       $html .= '<div class="header_service-social-image">';
       $html .= $svg;
       $html .= '</div>';

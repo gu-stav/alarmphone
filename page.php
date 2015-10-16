@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="grid">
+<div class="grid content">
   <div class="grid_row">
     <div class="grid_column grid_column--9 app_content content">
       <div class="grid_row">

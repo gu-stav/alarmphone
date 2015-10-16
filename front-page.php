@@ -36,12 +36,18 @@
           <span>
             <?php pll_e('Latest News') ?>
           </span>
+
+          <?php echo get_home_posts_all_link(); ?>
         </h2>
 
         <?php
+          $args = array(
+            'strip_tags' => True,
+          );
+
           if($posts) {
             foreach($posts as $post) {
-              echo render_blog_post($post, '12', 'release_item', 'preview', null);
+              echo render_blog_post($post, '12', 'release_item', 'preview', $args);
             }
           }
         ?>

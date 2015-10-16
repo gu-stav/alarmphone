@@ -30,7 +30,7 @@
     <meta name="viewport"
           content="initial-scale=1" />
     <link rel="shortcut icon"
-          href="<?php bloginfo('template_url'); ?>/favicon.ico" />
+          href="<?php bloginfo('template_url'); ?>/favicon.png" />
     <link rel="alternate"
           type="application/rss+xml"
           title="<?php echo $page_name; ?>"
