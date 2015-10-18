@@ -1,4 +1,6 @@
 .intro {
+  transition: height .4s;
+
   &_container {
     margin: 0 0 4rem 0;
     position: relative;
@@ -27,19 +29,20 @@
 
   &_content {
     background: @app-background-base;
-    padding: 2.5rem;
+    bottom: 3rem;
+    padding: 1.8rem;
     position: absolute;
     right: 3rem;
     top: 3rem;
 
-    a {
+    > a {
       color: @text-color-base;
       text-decoration: none;
     }
   }
 
   &_headline {
-    margin: 0 0 2rem 0;
+    margin: 0 0 1rem 0;
     padding: 0;
   }
 
@@ -47,18 +50,101 @@
     font-size: 0;
     line-height: 1;
 
-    img {
+    .attachment-large {
       height: auto;
       width: 100%;
     }
 
-    iframe {
-      height: 100%;
+    .responsive-video {
+      display: none;
+    }
+  }
+
+  &_link {
+    position: relative;
+  }
+
+  &_action {
+    margin-top: 2.5rem;
+    padding-left: 1.6rem;
+    position: relative;
+
+    > img {
+      height: 1.2rem;
       left: 0;
       position: absolute;
-      top: 0;
-      width: 100%;
+      top: .3rem;
+      width: 1.2rem;
     }
+
+    a {
+      color: @text-color-base;
+      font-family: @font-family-headline-bold;
+      font-size: 1.4rem;
+      text-decoration: underline;
+
+      &:hover,
+      &:focus {
+        color: @brand-color-base;
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &_play {
+    background-color: @brand-color-base;
+    bottom: 3rem;
+    border: none;
+    display: block;
+    left: 3rem;
+    padding: .6rem 3.8rem .6rem 1rem;
+    position: absolute;
+
+    &-icon {
+      height: 2rem;
+      margin-right: .5rem;
+      vertical-align: middle;
+      width: 2rem;
+    }
+
+    &-label {
+      color: @text-color-on-brand-color-base;
+      font-family: @font-family-headline-bold;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: darken(@brand-color-base, 5%);
+      border: 0 !important;
+      cursor: pointer;
+    }
+
+    &:hover &-label,
+    &:focus &-label {
+      text-decoration: underline;
+    }
+  }
+
+  &--video-view &_media .attachment-large,
+  &--video-view &_play {
+    display: none;
+  }
+
+  &--video-view &_media .responsive-video {
+    display: block;
+  }
+
+  &--video-view &_content {
+    border-top: 4px solid @brand-color-base;
+    position: static;
+    width: 100%;
   }
 }
 
@@ -81,7 +167,7 @@
     }
 
     &_content {
-      padding: 1rem 0 0 0;
+      padding: 2rem 0 0 0;
       position: static;
       width: 100%;
     }
@@ -89,6 +175,22 @@
     &_text {
       p {
         margin: 0;
+      }
+    }
+
+    &_play {
+      bottom: 1rem;
+      left: 1rem;
+      padding: .4rem 2.5rem .4rem .4rem;
+
+      &-icon {
+        height: 1.4rem;
+        margin-right: .3rem;
+        width: 1.4rem;
+      }
+
+      &-label {
+        font-size: 1rem;
       }
     }
   }

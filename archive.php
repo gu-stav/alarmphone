@@ -23,9 +23,10 @@
             switch($qu->taxonomy) {
               case 'category':
                 $category_name = $qu->cat_name;
+                $category_id = $qu->cat_ID;
 
                 $options = array(
-                  'cat' => $qu->cat_ID,
+                  'cat' => $category_id,
                   'post_type' => 'post',
                 );
                 break;
@@ -44,10 +45,14 @@
 
           <div class="release">
             <?php
+              $args = array(
+                'external_links' => True,
+              );
+
               if($posts) {
                 foreach($posts as $post) {
                   echo '<div class="grid_row">';
-                  echo render_blog_post($post, '12', 'release_item', 'preview', null);
+                  echo render_blog_post($post, '12', 'release_item', 'preview', $args);
                   echo '</div>';
                 }
               }

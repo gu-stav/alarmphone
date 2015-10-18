@@ -167,16 +167,21 @@ if(function_exists('acf_add_options_page')) {
 }
 
 function get_home_posts_category() {
-  return get_field('front-page_news_category', 'option');
+  $id = get_field('front-page_news_category', 'option');
+  $id_trans = pll_get_term($id);
+
+  return $id_trans ? $id_trans : $id;
 }
 
 function get_home_posts_all_link() {
   $category_id = get_home_posts_category();
   $category_name = get_cat_name($category_id);
+  $category_name_trans = pll__('All {{category_name}}');
   $link = get_category_link($category_id);
 
-  $markup = '<a href="' . $link . '">' . pll__('All {{category_name}}') . ' ' . '</a>';
-  $markup = str_replace('{{category_name}}', $category_name, $markup);
+  $category_name_trans = str_replace('{{category_name}}', $category_name, $category_name_trans);
+
+  $markup = '<a href="' . $link . '">' . $category_name_trans . '</a>';
   return $markup;
 }
 
@@ -359,6 +364,7 @@ function render_blog_post($post, $size, $css_class, $type, $options) {
     'render_post_category' => False,
     'render_post_text' => False,
     'strip_tags' => False,
+    'external_links' => False,
   );
 
   if(!$options) {
@@ -469,47 +475,42 @@ function render_intro($intro) {
   $title = $intro->post_title;
   $link = get_permalink($id);
   $text = get_field('excerpt', $id);
-  $image_or_video = get_field('image_or_video', $id);
-  $col_width_media = $image_or_video == 'image' ? 12 : 9;
-  $col_width_text = $image_or_video == 'image' ? 4 : 3;
+  $action = get_field('action', $id);
 
-  if($image_or_video == 'image') {
-    $image = get_field('image', $id);
-    $media = wp_get_attachment_image($image['id'], 'large', 0);
-  } else {
-    $video = get_field('youtube_video_url', $id);
-    $media = wp_oembed_get($video, array('width' => '850px'));
-  }
+  $image = get_field('image', $id);
+  $image = wp_get_attachment_image($image['id'], 'large', 0);
 
-  if(!$media) {
-    $col_width_text = 12;
-  }
+  $video = get_field('youtube_video_url', $id);
+  $video = wp_oembed_get($video, array('width' => '850px'));
 
-  $html = '<div class="grid_column grid_column--12 intro_container ' . (isset($video) ? 'intro_container--video' : '') . '">';
+  $html = '<div class="grid_column grid_column--12 intro_container">';
   $html .= '<div class="grid">';
     $html .= '<div class="grid_row">';
-
-      if($media) {
-        $html .= '<div class="grid_column grid_column--' . $col_width_media . ' intro_media">';
-
-        if($image_or_video == 'image') {
-          $html .= '<a href="' . $link . '">';
-        }
-
-          $html .= $media;
-
-        if($image_or_video == 'image') {
-          $html .= '</a>';
-        }
-
+      $html .= '<div class="grid_column grid_column--12 intro_media">';
+        $html .= '<a href="' . $link . '" class="intro_link">';
+          $html .= '<button class="intro_play">';
+            $html .= '<img src="' . get_bloginfo('template_directory') . '/assets/play-circle.svg"
+                           alt="' . __('Play Video') . '"
+                           class="intro_play-icon" />';
+            $html .= '<span class="intro_play-label">View Clip</span>';
+          $html .= '</button>';
+          $html .= $image;
+        $html .= '</a>';
+        $html .= '<div class="responsive-video">';
+          $html .= $video;
         $html .= '</div>';
-      }
+      $html .= '</div>';
 
-      $html .= '<div class="grid_column grid_column--' . $col_width_text . ' intro_content">';
+      $html .= '<div class="grid_column grid_column--4 intro_content">';
         $html .= '<a href="' . $link . '">';
-        $html .= '<h1 class="intro_headline headline headline--h2">' . $title . '</h1>';
+          $html .= '<h1 class="intro_headline headline headline--h2">' . $title . '</h1>';
         $html .= '</a>';
         $html .= '<div class="intro_text richtext">' . $text . '</div>';
+        $html .= '<div class="intro_action">';
+          $html .= '<img src="' . get_bloginfo('template_directory') . '/assets/arrow-right.svg"
+                         alt="" />';
+          $html .= $action;
+        $html .= '</div>';
       $html .= '</div>';
   $html .= '</div>';
 
@@ -521,6 +522,7 @@ function fill_categories($field) {
 
   if(is_array($choices)) {
     $field['choices'] = array();
+
     foreach($choices as $choice) {
       $field['choices'][ $choice->cat_ID ] = $choice->name;
     }
@@ -540,6 +542,10 @@ function render_social_menu() {
   }
 
   $menu_items = wp_get_nav_menu_items($locations[$menu_slug]);
+
+  if(!$menu_items) {
+    return '';
+  }
 
   foreach($menu_items as $item) {
     $html .= '<li class="header_service-social-item">';

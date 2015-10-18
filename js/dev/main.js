@@ -76,4 +76,19 @@ require(['jquery'], function($) {
   });
 });
 
+/* Front-Page Video Switch */
+require(['jquery'], function($) {
+  $(function() {
+    var toggleImage = function(e) {
+      e.preventDefault();
+
+      var $this = $(this);
+      var $video = $this.parent().next('iframe');
+      $this.closest('.intro').addClass('intro--video-view');
+    };
+
+    $('.intro_play').on('click', toggleImage);
+  });
+});
+
 require(['shariff'], function() {});

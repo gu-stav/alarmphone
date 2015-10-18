@@ -6,7 +6,13 @@
       <div class="grid_row">
         <div class="grid_column grid_column--12">
           <?php
-            echo render_post_as_grid_item(get_post(), '12', '', 'full');
+            $post = get_post();
+            $is_page = is_page($post);
+            $args = array(
+              'render_post_date' => ($is_page ? False : True),
+            );
+
+            echo render_post_as_grid_item($post, '12', '', 'full', $args);
           ?>
         </div>
       </div>
