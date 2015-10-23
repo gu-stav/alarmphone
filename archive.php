@@ -47,6 +47,7 @@
             <?php
               $args = array(
                 'external_links' => True,
+                'strip_tags' => True,
               );
 
               if($posts) {
