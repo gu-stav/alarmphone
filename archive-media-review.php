@@ -33,6 +33,7 @@
               $post_args = array(
                 'render_post_text' => true,
                 'text_to_teaser' => true,
+                'strip_tags' => true,
               );
 
               if($taxonomy_items) {
