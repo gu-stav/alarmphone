@@ -705,7 +705,7 @@ function add_langgroups_to_pll($taxonomies, $hide) {
 
 function shortcode_bulletpoint($atts, $content = null) {
   ob_start();
-  $counter = $atts['count'];
+  $label = $atts['label'];
   $headline = null;
 
   if(array_key_exists('headline', $atts)) {
@@ -715,7 +715,7 @@ function shortcode_bulletpoint($atts, $content = null) {
   ?>
 
   <div class="bulletpoint">
-    <strong class="bulletpoint_label"><?php echo $counter; ?></strong>
+    <strong class="bulletpoint_label"><?php echo $label; ?></strong>
     <div class="bulletpoint_content">
 
       <?php if($headline) { ?>
