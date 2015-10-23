@@ -1,0 +1,50 @@
+.bulletpoint {
+  position: relative;
+
+  &_label {
+    background-color: rgb(143, 213, 243);
+    border-radius: 100%;
+    color: white;
+    display: block;
+    font-family: @font-family-headline-bold;
+    font-size: 2.3rem;
+    line-height: 4rem;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 1.5rem;
+    width: 4rem;
+  }
+
+  &_headline {
+    display: block;
+    font-family: @font-family-headline-bold;
+    font-size: 1.4rem;
+    margin: 0 0 .5rem 0;
+  }
+
+  &_content {
+    margin: 0;
+    padding: 1.5rem 0 0 5rem;
+  }
+
+  & + & {
+    margin-top: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .bulletpoint {
+    &_label {
+      position: static;
+    }
+
+    &_content {
+      padding-left: 0;
+    }
+
+    & + & {
+      margin-top: 3rem;
+    }
+  }
+}

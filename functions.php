@@ -703,8 +703,39 @@ function add_langgroups_to_pll($taxonomies, $hide) {
     return $taxonomies;
 }
 
+function shortcode_bulletpoint($atts, $content = null) {
+  ob_start();
+  $counter = $atts['count'];
+  $headline = null;
+
+  if(array_key_exists('headline', $atts)) {
+    $headline = $atts['headline'];
+  }
+
+  ?>
+
+  <div class="bulletpoint">
+    <strong class="bulletpoint_label"><?php echo $counter; ?></strong>
+    <div class="bulletpoint_content">
+
+      <?php if($headline) { ?>
+        <strong class="bulletpoint_headline">
+          <?php echo $headline; ?>
+        </strong>
+      <?php } ?>
+
+      <?php echo $content; ?>
+    </div>
+  </div>
+
+  <?php
+  return ob_get_clean();
+}
+
 add_action('init', 'create_post_types');
 add_action('widgets_init', 'widgets_init');
+
+add_shortcode('bulletpoint', 'shortcode_bulletpoint');
 
 add_filter('acf/load_field/name=front-page_news_category', 'fill_categories');
 add_filter('acf/load_field/name=front-page_intro_category', 'fill_categories');
