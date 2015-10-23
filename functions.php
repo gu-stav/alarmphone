@@ -159,6 +159,18 @@ function create_post_types() {
       'has_archive' => true,
     )
   );
+
+  /* Media Review */
+  register_post_type( 'media-review',
+    array(
+      'labels' => array(
+        'name' => __( 'Media Reviews' ),
+        'singular_name' => __( 'Media Review' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+    )
+  );
 }
 
 if(function_exists('acf_add_options_page')) {
@@ -201,7 +213,7 @@ function get_home_posts() {
   }
 
   $options = array(
-    'post_per_page' => 5,
+    'posts_per_page' => 5,
     'order' => 'DESC',
     'cat' => $category_id,
   );
