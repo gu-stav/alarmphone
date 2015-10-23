@@ -161,16 +161,30 @@ function create_post_types() {
   );
 
   /* Media Review */
-  register_post_type( 'media-review',
+  register_post_type('media-review',
     array(
       'labels' => array(
         'name' => __( 'Media Reviews' ),
         'singular_name' => __( 'Media Review' )
       ),
+      'taxonomies' => array('langgroups'),
       'public' => true,
       'has_archive' => true,
     )
   );
+
+  register_taxonomy('langgroups', 'media-review', array(
+    'labels' => array(
+      'name' => __('Languages'),
+      'singular_name' => __('Language'),
+      'edit_item' => __('Edit Language'),
+      'all_items' => __('All Languages'),
+      'add_new_item' => __('Add New Language'),
+    ),
+    'public' => false,
+    'show_ui' => true,
+    'hierarchical' => true,
+  ));
 }
 
 if(function_exists('acf_add_options_page')) {
@@ -277,6 +291,7 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
   $date = mysql2date($date_format, $post->post_date, True);
   $link = get_post_permalink($id);
   $image_id = get_field('image', $id);
+  $external_link = get_field('external_link', $id);
   $image_attr = array(
     'class' => 'post_image',
   );
@@ -284,6 +299,7 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
   $render_post_text = True;
   $render_post_teaser = True;
   $render_post_date = True;
+  $text_to_teaser = False;
   $headline_hierachy = '3';
 
   if($type == 'full') {
@@ -309,6 +325,10 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
 
   if(array_key_exists('render_post_date', $options)) {
     $render_post_date = $options['render_post_date'];
+  }
+
+  if(array_key_exists('text_to_teaser', $options)) {
+    $text_to_teaser = $options['text_to_teaser'];
   }
 
   $image_size = 'post-thumb';
@@ -361,8 +381,33 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
     }
 
     if($render_post_text && isset($text)) {
-      $text = apply_filters('the_content', $text);
-      $html .= '<div class="post_text richtext">' . $text . '</div>';
+      if(array_key_exists('strip_tags', $options)) {
+        if($options['strip_tags']) {
+          $text = wp_strip_all_tags($text, True);
+          $text = '<p>' . $text . '</p>';
+        }
+      } else {
+        $text = apply_filters('the_content', $text);
+      }
+
+      if($text_to_teaser) {
+        $textclass = 'post_teaser';
+      } else {
+        $textclass = 'post_text';
+      }
+
+      $html .= '<div class="' . $textclass . ' richtext">';
+        $html .= $text;
+
+        if($external_link) {
+          $html .= '<a class="post_external-link" href="' . $external_link . '">';
+          $html .= '<img src="' . get_bloginfo('template_directory') . '/assets/arrow-right-black.svg"
+                         alt="' . __('External Link: ') . '"
+                         class="post_external-link-icon" />';
+          $html .= $title . '</a>';
+        }
+
+      $html .= '</div>';
     }
 
   $html .= '</div>';
@@ -377,6 +422,7 @@ function render_blog_post($post, $size, $css_class, $type, $options) {
     'render_post_text' => False,
     'strip_tags' => False,
     'external_links' => False,
+    'text_to_teaser' => False,
   );
 
   if(!$options) {
@@ -648,12 +694,23 @@ register_nav_menus( array(
   'footer'  => __( 'Footer Menu' ),
 ) );
 
+function add_langgroups_to_pll($taxonomies, $hide) {
+    if ($hide)
+        unset($taxonomies['langgroups']);
+    else
+        $taxonomies['langgroups'] = 'langgroups';
+
+    return $taxonomies;
+}
+
 add_action('init', 'create_post_types');
 add_action('widgets_init', 'widgets_init');
 
 add_filter('acf/load_field/name=front-page_news_category', 'fill_categories');
 add_filter('acf/load_field/name=front-page_intro_category', 'fill_categories');
 add_filter('acf/load_field/name=front-page_grid_category', 'fill_categories');
+
+add_filter('pll_get_taxonomies', 'add_langgroups_to_pll', 10, 2);
 
 if(function_exists('pll_register_string')) {
   translate_static_strings();

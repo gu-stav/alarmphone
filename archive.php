@@ -35,6 +35,7 @@
                 if(is_post_type_archive()) {
                   $category_name = $qu->labels->name;
                 }
+
                 break;
             }
 
