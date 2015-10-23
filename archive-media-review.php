@@ -16,8 +16,6 @@
             $category_name = $qu->labels->name;
 
             $args = array(
-              'orderby' => 'title',
-              'order' => 'DESC',
               'post_type' => 'media-review',
               'posts_per_page' => -1,
               'post_status' => 'publish',
