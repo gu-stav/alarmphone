@@ -54,7 +54,7 @@
               if($posts) {
                 foreach($posts as $post) {
                   echo '<div class="grid_row">';
-                  echo render_blog_post($post, '12', 'release_item', 'preview', $args);
+                    echo render_blog_post($post, '12', 'release_item', 'preview', $args);
                   echo '</div>';
                 }
               }

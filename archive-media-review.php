@@ -38,19 +38,21 @@
 
               if($taxonomy_items) {
                 foreach($taxonomy_items as $taxonomy_item) {
-                  $options = array(
-                    'langgroups' => $taxonomy_item->slug,
-                  );
-                  $posts = query_posts(array_merge($args, $options));
 
-                  echo '<h2>' . $taxonomy_item->name . '</h2>';
+                  // query for taxonomy slug
+                  $args['langgroups'] = $taxonomy_item->slug;
+                  $posts = query_posts($args);
+                  $taxonomy_item_name = $taxonomy_item->name;
+
+                  echo '<div class="grid_row">';
+                    echo '<h2>' . $taxonomy_item_name . '</h2>';
+                  echo '</div>';
 
                   foreach($posts as $post) {
                     echo '<div class="grid_row">';
                       echo render_blog_post($post, '12', 'release_item', 'preview', $post_args);
                     echo '</div>';
                   }
-
                 }
               }
             ?>
