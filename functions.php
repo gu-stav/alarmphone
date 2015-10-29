@@ -400,7 +400,7 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
         $html .= $text;
 
         if($external_link) {
-          $html .= '<a class="post_external-link" href="' . $external_link . '">';
+          $html .= '<a class="post_external-link" target="_blank" href="' . $external_link . '">';
           $html .= '<img src="' . get_bloginfo('template_directory') . '/assets/arrow-right-black.svg"
                          alt="' . __('External Link: ') . '"
                          class="post_external-link-icon" />';
@@ -727,6 +727,7 @@ function shortcode_bulletpoint($atts, $content = null) {
       <?php echo $content; ?>
     </div>
   </div>
+
 
   <?php
   return ob_get_clean();
