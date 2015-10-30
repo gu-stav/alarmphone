@@ -371,6 +371,7 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
       if(array_key_exists('strip_tags', $options)) {
         if($options['strip_tags']) {
           $teaser = wp_strip_all_tags($teaser, True);
+          $teaser = strip_shortcodes($teaser);
           $teaser = '<p>' . $teaser . '</p>';
         }
       } else {
@@ -384,6 +385,7 @@ function render_post_as_grid_item($post, $size, $css_class, $type, $options=arra
       if(array_key_exists('strip_tags', $options)) {
         if($options['strip_tags']) {
           $text = wp_strip_all_tags($text, True);
+          $text = strip_shortcodes($text);
           $text = '<p>' . $text . '</p>';
         }
       } else {
