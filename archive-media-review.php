@@ -13,8 +13,6 @@
               return;
             }
 
-            $category_name = $qu->labels->name;
-
             $args = array(
               'post_type' => 'media-review',
               'posts_per_page' => -1,
@@ -23,7 +21,7 @@
             );
           ?>
 
-          <h1 class="headline headline--h1"><?php echo $category_name; ?></h1>
+          <h1 class="headline headline--h1"><?php pll_e('Media Reviews'); ?></h1>
 
           <div class="release">
             <?php

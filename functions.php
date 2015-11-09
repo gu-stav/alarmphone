@@ -13,6 +13,7 @@ function translate_static_strings() {
     'In case of emergency call',
     'Material',
     'Alarmphone Logo',
+    'Media Reviews',
   );
 
   foreach($strings as $string) {
