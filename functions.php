@@ -549,12 +549,14 @@ function render_intro($intro) {
     $html .= '<div class="grid_row">';
       $html .= '<div class="grid_column grid_column--12 intro_media">';
         $html .= '<a href="' . $link . '" class="intro_link">';
-          $html .= '<button class="intro_play">';
-            $html .= '<img src="' . get_bloginfo('template_directory') . '/assets/play-circle.svg"
-                           alt="' . __('Play Video') . '"
-                           class="intro_play-icon" />';
-            $html .= '<span class="intro_play-label">View Clip</span>';
-          $html .= '</button>';
+          if($video) {
+            $html .= '<button class="intro_play">';
+              $html .= '<img src="' . get_bloginfo('template_directory') . '/assets/play-circle.svg"
+                             alt="' . __('Play Video') . '"
+                             class="intro_play-icon" />';
+              $html .= '<span class="intro_play-label">View Clip</span>';
+            $html .= '</button>';
+          }
           $html .= $image;
         $html .= '</a>';
         $html .= '<div class="responsive-video">';
