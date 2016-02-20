@@ -740,6 +740,7 @@ function shortcode_bulletpoint($atts, $content = null) {
 
 add_action('init', 'create_post_types');
 add_action('widgets_init', 'widgets_init');
+add_filter('widget_text', 'do_shortcode');
 
 add_shortcode('bulletpoint', 'shortcode_bulletpoint');
 
