@@ -544,6 +544,9 @@ function render_intro($intro) {
   $video = get_field('youtube_video_url', $id);
   $video = wp_oembed_get($video, array('width' => '850px'));
 
+  $play_icon = '<svg class="intro_play-icon" width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1312 896q0 37-32 55l-544 320q-15 9-32 9-16 0-32-8-32-19-32-56v-640q0-37 32-56 33-18 64 1l544 320q32 18 32 55zm128 0q0-148-73-273t-198-198-273-73-273 73-198 198-73 273 73 273 198 198 273 73 273-73 198-198 73-273zm224 0q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z" fill="#fff"/></svg>';
+  $arrow_icon = '<svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1600 960q0 54-37 91l-651 651q-39 37-91 37-51 0-90-37l-75-75q-38-38-38-91t38-91l293-293h-704q-52 0-84.5-37.5t-32.5-90.5v-128q0-53 32.5-90.5t84.5-37.5h704l-293-294q-38-36-38-90t38-90l75-75q38-38 90-38 53 0 91 38l651 651q37 35 37 90z"/></svg>';
+
   $html = '<div class="grid_column grid_column--12 intro_container">';
   $html .= '<div class="grid">';
     $html .= '<div class="grid_row">';
@@ -551,9 +554,7 @@ function render_intro($intro) {
         $html .= '<a href="' . $link . '" class="intro_link">';
           if($video) {
             $html .= '<button class="intro_play">';
-              $html .= '<img src="' . get_bloginfo('template_directory') . '/assets/play-circle.svg"
-                             alt="' . __('Play Video') . '"
-                             class="intro_play-icon" />';
+              $html .= $play_icon;
               $html .= '<span class="intro_play-label">View Clip</span>';
             $html .= '</button>';
           }
@@ -570,8 +571,7 @@ function render_intro($intro) {
         $html .= '</a>';
         $html .= '<div class="intro_text richtext">' . $text . '</div>';
         $html .= '<div class="intro_action">';
-          $html .= '<img src="' . get_bloginfo('template_directory') . '/assets/arrow-right.svg"
-                         alt="" />';
+          $html .= $arrow_icon;
           $html .= $action;
         $html .= '</div>';
       $html .= '</div>';
