@@ -738,11 +738,46 @@ function shortcode_bulletpoint($atts, $content = null) {
   return ob_get_clean();
 }
 
+function shortcode_paypal($atts, $content = null) {
+  ob_start();
+  ?>
+
+  <form action="https://www.paypal.com/cgi-bin/webscr"
+        method="post"
+        target="_top">
+
+  <input type="hidden"
+         name="cmd"
+         value="_s-xclick" />
+
+  <input type="hidden"
+         name="hosted_button_id"
+         value="Q9TUQPGBLTHUA" />
+
+  <input type="image"
+         src="https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donateCC_LG.gif"
+         border="0"
+         name="submit"
+         alt="Jetzt einfach, schnell und sicher online bezahlen – mit PayPal." />
+
+  <img alt=""
+       border="0"
+       src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif"
+       width="1"
+       height="1" />
+  </form>
+
+  <?php
+  return ob_get_clean();
+}
+
 add_action('init', 'create_post_types');
 add_action('widgets_init', 'widgets_init');
 add_filter('widget_text', 'do_shortcode');
 
 add_shortcode('bulletpoint', 'shortcode_bulletpoint');
+add_shortcode('paypal', 'shortcode_paypal');
+
 
 add_filter('acf/load_field/name=front-page_news_category', 'fill_categories');
 add_filter('acf/load_field/name=front-page_intro_category', 'fill_categories');
