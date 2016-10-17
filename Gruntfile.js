@@ -2,6 +2,14 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
+    cssmin: {
+      target: {
+        files: {
+          'style.css': ['style.css',]
+        }
+      }
+    },
+
     less: {
       dev: {
         options: {
@@ -74,5 +82,5 @@ module.exports = function(grunt) {
     },
   });
 
-  grunt.registerTask('compile', ['less', 'requirejs']);
+  grunt.registerTask('compile', ['less', 'cssmin', 'requirejs']);
 };
