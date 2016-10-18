@@ -1,0 +1,36 @@
+.shariff {
+  &-buttons {
+    padding-left: 0;
+  }
+
+  &-button {
+    color: white;
+    display: inline-block;
+    line-height: 1;
+    list-style: none;
+    width: auto;
+
+    & + & {
+      margin-left: .3rem;
+    }
+  }
+
+  &-icon,
+  &-text {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &-icon > svg {
+    fill: white;
+  }
+
+  a&-link {
+    font-family: Arial;
+    font-size: .7rem;
+    line-height: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: .8rem 1rem;
+  }
+}
